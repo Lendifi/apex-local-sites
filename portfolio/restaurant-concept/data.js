@@ -5,7 +5,7 @@ window.MENU=[
 "p": 20,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Favorites",
-"img": "img/menu-ahi-tacos.webp",
+"img": null,
 "t": []
 },
 {
@@ -13,7 +13,7 @@ window.MENU=[
 "p": 19,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Favorites",
-"img": "img/menu-beer-battered-fish-tacos.webp",
+"img": null,
 "t": []
 },
 {
@@ -29,7 +29,7 @@ window.MENU=[
 "p": 18,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Favorites",
-"img": "img/menu-burnt-ends-tacos.webp",
+"img": null,
 "t": []
 },
 {
@@ -45,7 +45,7 @@ window.MENU=[
 "p": 18,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Favorites",
-"img": "img/menu-coconut-shrimp-tacos.webp",
+"img": null,
 "t": []
 },
 {
@@ -77,7 +77,7 @@ window.MENU=[
 "p": 16,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Favorites",
-"img": "img/menu-street-tacos.webp",
+"img": null,
 "t": []
 },
 {
@@ -133,7 +133,7 @@ window.MENU=[
 "p": 23,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-house-sampler.webp",
+"img": null,
 "t": []
 },
 {
@@ -141,7 +141,7 @@ window.MENU=[
 "p": 14,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-chip-trifecta-sampler.webp",
+"img": null,
 "t": []
 },
 {
@@ -149,7 +149,7 @@ window.MENU=[
 "p": 6,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-chips-queso.webp",
+"img": null,
 "t": []
 },
 {
@@ -157,7 +157,7 @@ window.MENU=[
 "p": 6,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-chips-salsa.webp",
+"img": null,
 "t": []
 },
 {
@@ -184,7 +184,7 @@ window.MENU=[
 "p": 5,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-french-fries.webp",
+"img": null,
 "t": []
 },
 {
@@ -200,7 +200,7 @@ window.MENU=[
 "p": 9,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-onion-rings.webp",
+"img": null,
 "t": []
 },
 {
@@ -216,7 +216,7 @@ window.MENU=[
 "p": 10,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-pickle-fries.webp",
+"img": null,
 "t": []
 },
 {
@@ -224,7 +224,7 @@ window.MENU=[
 "p": 10,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-pretzel-bites.webp",
+"img": null,
 "t": []
 },
 {
@@ -248,7 +248,7 @@ window.MENU=[
 "p": 8,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-sweet-potato-fries.webp",
+"img": null,
 "t": []
 },
 {
@@ -256,7 +256,7 @@ window.MENU=[
 "p": 7,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-tator-tots.webp",
+"img": null,
 "t": []
 },
 {
@@ -272,7 +272,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Sauces: Buffalo, BBQ, Garlic Parm, Lemon Pepper, Honey Hot, Teriyaki. Full order.",
 "c": "Appetizers",
-"img": "img/menu-wings-bone-in.webp",
+"img": null,
 "t": []
 },
 {
@@ -280,7 +280,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Appetizers",
-"img": "img/menu-wings-boneless.webp",
+"img": null,
 "t": []
 },
 {
@@ -392,7 +392,7 @@ window.MENU=[
 "p": 30,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Brunch",
-"img": "img/menu-sunrise-housefast-board.webp",
+"img": null,
 "t": []
 },
 {
@@ -432,7 +432,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-bacon-avocado-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -440,7 +440,7 @@ window.MENU=[
 "p": 15,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-garlic-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -448,7 +448,7 @@ window.MENU=[
 "p": 16,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-green-chili-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -456,7 +456,7 @@ window.MENU=[
 "p": 16,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-mushroom-swiss-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -464,7 +464,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-spicy-guacamole-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -472,7 +472,7 @@ window.MENU=[
 "p": 19,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-steakhouse-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -480,7 +480,7 @@ window.MENU=[
 "p": 16,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Burgers",
-"img": "img/menu-traditional-cheese-burger.webp",
+"img": null,
 "t": []
 },
 {
@@ -600,7 +600,7 @@ window.MENU=[
 "p": 21,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-chimichurri-steak-sandwich.webp",
+"img": null,
 "t": []
 },
 {
@@ -608,7 +608,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-club.webp",
+"img": null,
 "t": []
 },
 {
@@ -616,7 +616,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-el-cubano.webp",
+"img": null,
 "t": []
 },
 {
@@ -624,7 +624,7 @@ window.MENU=[
 "p": 17,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-french-dip.webp",
+"img": null,
 "t": []
 },
 {
@@ -632,7 +632,7 @@ window.MENU=[
 "p": 18,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-jalapeno-cheesesteak.webp",
+"img": null,
 "t": []
 },
 {
@@ -640,7 +640,7 @@ window.MENU=[
 "p": 18,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-slc-cheesesteak.webp",
+"img": null,
 "t": []
 },
 {
@@ -648,7 +648,7 @@ window.MENU=[
 "p": 15,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-turkey-avocado.webp",
+"img": null,
 "t": []
 },
 {
@@ -656,7 +656,7 @@ window.MENU=[
 "p": 15,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-turkey-cranberry-sandwich.webp",
+"img": null,
 "t": []
 },
 {
@@ -664,7 +664,7 @@ window.MENU=[
 "p": 16,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-buffalo-wrap.webp",
+"img": null,
 "t": []
 },
 {
@@ -672,7 +672,7 @@ window.MENU=[
 "p": 16,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Sandwiches",
-"img": "img/menu-chicken-bacon-ranch-sandwich.webp",
+"img": null,
 "t": []
 },
 {
@@ -696,7 +696,7 @@ window.MENU=[
 "p": 10,
 "d": "Example item. Description and price are placeholders for the owner's real menu.",
 "c": "Desserts",
-"img": "img/menu-cinnamon-sugar-pretzel-bites.webp",
+"img": null,
 "t": []
 },
 {

@@ -103,9 +103,9 @@ if(!RM){let tick=false;const run=()=>{px.forEach(el=>{const r=el.parentElement.g
 
 /* ---------- VIDEO ---------- */
 const v=$('[data-video]'),vt=$('[data-video-toggle]');
-if(RM){v.removeAttribute('autoplay');v.pause()}
+if(v&&vt){if(RM){v.removeAttribute('autoplay');v.pause()}
 const sync=()=>{vt.textContent=v.paused?'Play video':'Pause video';vt.setAttribute('aria-pressed',!v.paused)};
-vt.onclick=()=>{v.paused?v.play():v.pause();sync()};v.addEventListener('play',sync);v.addEventListener('pause',sync);sync();
+vt.onclick=()=>{v.paused?v.play():v.pause();sync()};v.addEventListener('play',sync);v.addEventListener('pause',sync);sync();}
 
 /* ---------- LIGHTBOX ---------- */
 const lb=$('[data-lightbox]'),lbImg=$('[data-lb-img]'),lbCap=$('[data-lb-cap]'),gi=$$('[data-gallery] img');let li=0;
