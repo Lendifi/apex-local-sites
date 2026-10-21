@@ -376,3 +376,24 @@ form.f{align-content:start}
 .fok{font:600 1.2rem Fraunces;padding:24px}
 .fok:before{content:"\2713  ";color:var(--lime)}
 .hero .facts svg{height:16px;flex:none}.hero{min-height:auto}@media(min-width:1000px){.hero{min-height:100vh}}
+/* booking contact details (demo) */
+.capt div b{overflow-wrap:anywhere}.capt div[data-k="appt"]{grid-column:1/-1}
+.cform{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.cform label,.bdet label{display:flex;flex-direction:column;gap:3px;font:700 .72rem Inter;color:#4a5568;text-align:left}
+.cform input,.bdet input{font:400 16px Inter;padding:9px 11px;border:1px solid #cfd6e0;border-radius:9px;background:#fff;color:#111;width:100%;min-width:0}
+.cform input:focus,.bdet input:focus{outline:2px solid #1b6b4f;outline-offset:0;border-color:#1b6b4f}
+.cform input.bad,.bdet input.bad{border-color:#d33;background:#fff5f5}
+.cfx{grid-column:1/-1;color:#6b7280;font-size:.7rem}
+.cerr{grid-column:1/-1;color:#c22;font:600 .75rem Inter;min-height:0;margin:0}
+.cerr:empty{display:none}
+.cbtns{grid-column:1/-1;display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.chips .cbtns .cgo{background:#1b6b4f;color:#fff}
+.msg .bkd{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 6px;font-size:.8rem}
+.msg .bkd dt{font-weight:700;color:#3b6b2a}.msg .bkd dd{margin:0;overflow-wrap:anywhere}
+.bdet{margin-top:12px;transition:opacity .3s}.bdet.off{opacity:.45;pointer-events:none}
+.bdet h4{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#bdemo{border:1px solid #1b6b4f;color:#1b6b4f;background:#fff;border-radius:99px;padding:4px 10px;font:600 .72rem Inter;cursor:pointer}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bgrid .w{grid-column:1/-1}
+.bdet .cerr{margin-top:8px}
+.toast .evd{margin:8px 0;padding:8px 10px;border-left:3px solid var(--lime);background:rgba(198,255,61,.08);border-radius:6px;display:flex;flex-direction:column;gap:2px;font-size:.82rem;overflow-wrap:anywhere}
+@media (max-width:560px){.cform,.bgrid{grid-template-columns:1fr}.capt{grid-template-columns:1fr}}

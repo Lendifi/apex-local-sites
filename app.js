@@ -53,15 +53,32 @@ wh:{t:"Sorry to hear that. Quick question so the tech comes prepared: is water a
 urg:{t:"Got it. If you can, turn the cold water valve on top of the heater to off. I'm flagging this as urgent so the owner sees it right away.",o:{"Ok, done":"city"}},
 city:{t:"We serve the whole Wasatch Front, from Salt Lake to Provo. What city are you in?",o:{"Salt Lake City":"slot","Sandy":"slot","Draper":"slot","Lehi":"slot","American Fork":"slot","Orem":"slot","Provo":"slot","Other city (type it)":"cityfree"}},
 slot:{t:"Here are the next open times:",o:{"Today 4:00 PM":"name","Tomorrow 8:00 AM":"name","Tomorrow 1:00 PM":"name"}},
-name:{t:"Perfect. Last thing: what's your name and best number? (Tap below for the demo.)",o:{"Jenna R., (555) 010-0142":"done"}},
+name:{t:"Perfect. To lock it in I just need your full name, service address, email, and phone. Fill in the quick form below (or tap \"Use demo info\").",o:{}},
 done:{t:"",o:{"Start over":"start"}}};
 let chatCtx={};
 const CITY_KEYS=Object.keys(FLOW.city.o).filter(c=>FLOW.city.o[c]==="slot");
+const DEMO_C={name:"Jordan M.",addr:"123 Example St, Lehi, UT",email:"jordan@example.com",phone:"(555) 010-0177"};
+const vEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v),vPhone=v=>v.replace(/\D/g,"").replace(/^1(?=\d{10}$)/,"").length===10;
+const fmtPhone=v=>{const d=v.replace(/\D/g,"").replace(/^1(?=\d{10}$)/,"");return d.length===10?`(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`:v};
+function contactForm(){const id=chatRun;chips.innerHTML=`<form class="cform" novalidate><small class="cfx">Demo form. Nothing is saved or sent.</small>
+<label>Full name<input name="name" autocomplete="off" placeholder="First and last name"></label>
+<label>Service address<input name="addr" autocomplete="off" placeholder="Street, city"></label>
+<label>Email<input name="email" type="email" inputmode="email" autocomplete="off" placeholder="you@example.com"></label>
+<label>Phone<input name="phone" type="tel" inputmode="tel" autocomplete="off" placeholder="(555) 010-0000"></label>
+<p class="cerr" aria-live="polite"></p><div class="cbtns"><button type="button" class="cdemo">Use demo info</button><button type="submit" class="cgo">Confirm booking</button></div></form>`;
+ const f=$("form",chips),err=$(".cerr",f);
+ $(".cdemo",f).onclick=()=>{for(const k in DEMO_C)f.elements[k].value=DEMO_C[k];err.textContent="";$$("input",f).forEach(i=>i.classList.remove("bad"))};
+ f.onsubmit=e=>{e.preventDefault();if(id!==chatRun)return;const v={};["name","addr","email","phone"].forEach(k=>v[k]=f.elements[k].value.trim().slice(0,80));
+  const bad=[];if(v.name.length<2)bad.push(["name","your name"]);if(v.addr.length<5||!/\d/.test(v.addr))bad.push(["addr","a service address with a street number"]);if(!vEmail(v.email))bad.push(["email","a valid email"]);if(!vPhone(v.phone))bad.push(["phone","a 10-digit phone number"]);
+  $$("input",f).forEach(i=>i.classList.toggle("bad",bad.some(b=>b[0]===i.name)));
+  if(bad.length){err.textContent="Please add "+bad.map(b=>b[1]).join(", ")+".";f.elements[bad[0][0]].focus();return}
+  v.phone=fmtPhone(v.phone);Object.assign(chatCtx,v);chips.innerHTML="";addMsg(`${esc(v.name)}<br>${esc(v.addr)}<br>${esc(v.email)}<br>${esc(v.phone)}`,"u");chatStep("done")}}
 function cityInput(){const id=chatRun;chips.innerHTML='<input id="chatcity" type="text" placeholder="Type your city" aria-label="Your city" style="flex:1;min-width:140px;padding:8px 12px;border-radius:999px;border:1px solid rgba(127,127,127,.4);font:inherit;background:transparent;color:inherit"><button id="chatcitygo">Send</button>';const inp=$("#chatcity");inp.focus();const go=()=>{const v=inp.value.trim().slice(0,40);if(!v||id!==chatRun)return;chips.innerHTML="";addMsg(esc(v),"u");chatCtx.city=v;chatStep("slot",v)};$("#chatcitygo").onclick=go;inp.onkeydown=e=>{if(e.key==="Enter")go()}}
 async function chatStep(k,ans){const id=chatRun;if(k==="cityfree"){cityInput();return}if(k==="slot"&&ans&&CITY_KEYS.includes(ans))chatCtx.city=ans;if(k==="name")chatCtx.time=ans;
  if(k==="slot"&&chatCtx.city){await bot(`Great, we cover ${esc(chatCtx.city)}.`,"",id);if(id!==chatRun)return}
- if(k==="done"){await bot(`<b>&#10003; You're booked!</b><br>${esc(chatCtx.time||"Tomorrow 8:00 AM")} &#183; ${esc(chatCtx.city||"Utah County")}<br>Water heater / plumbing visit<br><small>Confirmation text sent to (555) 010-0142. The owner got your details too.</small>`,"card",id)}
+ if(k==="done"){await bot(`<b>&#10003; You're booked!</b><br>${esc(chatCtx.time||"Tomorrow 8:00 AM")} &#183; ${esc(chatCtx.city||"Utah County")}<br>Plumbing visit<dl class="bkd"><dt>Name</dt><dd>${esc(chatCtx.name)}</dd><dt>Address</dt><dd>${esc(chatCtx.addr)}</dd><dt>Email</dt><dd>${esc(chatCtx.email)}</dd><dt>Phone</dt><dd>${esc(chatCtx.phone)}</dd></dl><small>Simulated: a confirmation would go to ${esc(chatCtx.email)} and ${esc(chatCtx.phone)}, and the owner's calendar gets all four details.</small>`,"card",id)}
  else await bot(FLOW[k].t,"",id);if(id!==chatRun)return;
+ if(k==="name"){contactForm();return}
  setChips(Object.keys(FLOW[k].o),o=>{const nx=FLOW[k].o[o];if(nx==="start"){resetChat();return}chatStep(nx,o)})}
 function resetChat(){chatRun++;chatbd.innerHTML="";chips.innerHTML="";chatCtx={};chatStep("start")}
 
@@ -70,11 +87,13 @@ const wave=$("#wave");for(let i=0;i<22;i++)wave.appendChild(document.createEleme
 let callRun=0,waveT=null,timerT=null;
 const CALL=[["ai","Thanks for calling Example Plumbing Co. This is Example Plumbing's AI assistant. I can help you schedule or answer questions. How can I help?"],
 ["c","Hi, my kitchen sink is backing up and it smells pretty bad."],["ai","Sorry about that. I can get a plumber out. Can I get your name?"],
-["c","Mike T..",{name:"Mike T."}],["ai","Thanks Mike. Is the number you're calling from the best one to reach you?"],["c","Yep, this one.",{phone:"(555) 010-0199"}],
-["ai","Great. What's the service address?"],["c","123 Example Street.",{addr:"123 Example St"}],
+["c","Jordan M.",{name:"Jordan M."}],["ai","Thanks Jordan. What's the service address?"],["c","123 Example Street in Lehi.",{addr:"123 Example St, Lehi"}],
+["ai","Got it, 123 Example Street, Lehi. What's the best email for your confirmation?"],["c","jordan@example.com"],
+["ai","Let me spell that back: J O R D A N, at example dot com. Is that right?"],["c","Yes, that's right.",{email:"jordan@example.com"}],
+["ai","And is (555) 010-0177, the number you're calling from, the best one to reach you?"],["c","Yep, that one.",{phone:"(555) 010-0177"}],
 ["ai","Is water overflowing onto the floor, or is it just slow and backing up?",{job:"Kitchen sink backup, odor"}],["c","Just backing up. Not flooding.",{urg:"Standard (not flooding)"}],
 ["ai","Okay. I have tomorrow at 9 AM or 1 PM open. Which works better?"],["c","9 works.",{appt:"Tomorrow 9:00 AM"}],
-["ai","You're booked for tomorrow at 9 AM. You'll get a text confirmation, and the tech will text when he's on the way. Anything else?"],["c","Nope, that's it. Thanks!"],["ai","Thanks Mike, have a good night."]];
+["ai","You're booked for tomorrow at 9 AM at 123 Example Street. You'll get a text and an email confirmation, and the tech will text when he's on the way. Anything else?"],["c","Nope, that's it. Thanks!"],["ai","Thanks Jordan, have a good night."]];
 function waveOn(on){clearInterval(waveT);$$("#wave i").forEach(i=>i.style.height="6px");if(on)waveT=setInterval(()=>$$("#wave i").forEach(i=>i.style.height=(6+Math.random()*28)+"px"),120)}
 function resetCall(){callRun++;waveOn(false);clearInterval(timerT);$("#ring").classList.remove("on");$("#ctimer").textContent="00:00";$("#cstat").textContent="Waiting";$("#tscript").innerHTML='<p style="color:var(--mut)">Press "Play the call" to hear how a call goes. The transcript shows up here line by line.</p>';$$("#capt div").forEach(d=>{d.classList.remove("got");$("b",d).textContent=""});$("#osms").classList.remove("show")}
 async function playCall(){resetCall();const id=callRun,ts=$("#tscript");ts.innerHTML="";$("#ring").classList.add("on");$("#cstat").textContent="Ringing...";await sleep(1200);if(id!==callRun)return;
@@ -84,7 +103,7 @@ async function playCall(){resetCall();const id=callRun,ts=$("#tscript");ts.inner
   if(cap)for(const k in cap){const d=$(`#capt [data-k="${k}"]`);$("b",d).textContent=cap[k];d.classList.add("got")}
   waveOn(false);await sleep(350)}
  clearInterval(timerT);$("#cstat").textContent="Call ended \u00b7 booked";
- $("#osmsb").innerHTML="New booking: Mike T., (555) 010-0199. Kitchen sink backup, not flooding. 123 Example St. Tomorrow 9:00 AM. Full transcript in your dashboard.";$("#osms").classList.add("show")}
+ $("#osmsb").innerHTML="New booking: Tomorrow 9:00 AM, kitchen sink backup (not flooding). Name: Jordan M. Address: 123 Example St, Lehi. Email: jordan@example.com. Phone: (555) 010-0177. Calendar event created. Full transcript in your dashboard.";$("#osms").classList.add("show")}
 $("#callgo").onclick=playCall;
 
 /* ===== 3 booking ===== */
@@ -93,7 +112,7 @@ let bk={};const today=new Date();
 const workdays=[];{let d=new Date(today);while(workdays.length<5){d.setDate(d.getDate()+1);if(d.getDay()>0&&d.getDay()<6)workdays.push(new Date(d))}}
 const SLOTS=["8:00 AM","9:00 AM","10:00 AM","1:00 PM","2:00 PM","3:00 PM"],HRS=["8","9","10","11","12","1","2","3","4"];
 const BUSY={0:[0,3],1:[1,2,5],2:[0,4],3:[2,3],4:[1,6]};
-function renderBook(){bk={};$("#svc").innerHTML=SV.map((s,i)=>`<button data-i="${i}"><span>${s[0]}</span><small>${s[1]}</small></button>`).join("");
+function renderBook(){bk={};const bf=$("#bdet");if(bf){bf.reset();$$("input",bf).forEach(i=>i.classList.remove("bad"));$("#berr").textContent=""}$("#svc").innerHTML=SV.map((s,i)=>`<button data-i="${i}"><span>${s[0]}</span><small>${s[1]}</small></button>`).join("");
  $$("#svc button").forEach(b=>b.onclick=()=>{$$("#svc button").forEach(x=>x.classList.remove("on"));b.classList.add("on");bk.s=SV[b.dataset.i][0];chk()});
  const m=new Date(today.getFullYear(),today.getMonth(),1);$("#mon").textContent=today.toLocaleString("en-US",{month:"long",year:"numeric"});
  let h="SMTWTFS".split("").map(c=>`<div class="h">${c}</div>`).join("");for(let i=0;i<m.getDay();i++)h+="<div></div>";
@@ -104,11 +123,18 @@ function renderBook(){bk={};$("#svc").innerHTML=SV.map((s,i)=>`<button data-i="$
  if(!$$("#cal button:not(:disabled)").length){/* month rollover: list next workdays */$("#cal").innerHTML=workdays.map((w,i)=>`<button data-w="${i}" style="aspect-ratio:auto;padding:6px;grid-column:span 7">${w.toDateString()}</button>`).join("");$$("#cal button").forEach(b=>b.onclick=()=>{$$("#cal button").forEach(x=>x.classList.remove("on"));b.classList.add("on");bk.w=+b.dataset.w;bk.t=null;slots();chk()})}
  $("#slots").innerHTML='<small style="color:#888">Pick a day to see open times</small>';$("#btoast").style.display="none";renderWeek();chk()}
 function slots(){const busy=BUSY[bk.w]||[];$("#slots").innerHTML=SLOTS.map((s,i)=>busy.includes(i)?"":`<button data-t="${s}">${s}</button>`).join("");$$("#slots button").forEach(b=>b.onclick=()=>{$$("#slots button").forEach(x=>x.classList.remove("on"));b.classList.add("on");bk.t=b.dataset.t;chk()})}
-function chk(){$("#bconf").disabled=!(bk.s&&bk.w>=0&&bk.t)}
+function chk(){const ok=!!(bk.s&&bk.w>=0&&bk.t);$("#bdet").classList.toggle("off",!ok);$("#bconf").disabled=!ok}
 const slotRow=t=>({"8:00 AM":0,"9:00 AM":1,"10:00 AM":2,"1:00 PM":5,"2:00 PM":6,"3:00 PM":7})[t];
 function renderWeek(nw){const W=$("#week");let h='<div></div>'+workdays.map(w=>`<div class="dh">${w.toLocaleDateString("en-US",{weekday:"short"})} ${w.getDate()}</div>`).join("");
  for(let r=0;r<HRS.length;r++){h+=`<div class="tm">${HRS[r]}</div>`;for(let c=0;c<5;c++){let e="";const bz=(BUSY[c]||[]).map(i=>slotRow(SLOTS[i]));if(bz.includes(r))e='<div class="ev x">Booked job</div>';if(nw&&nw.c===c&&nw.r===r)e=`<div class="ev nw">${esc(nw.s)}</div>`;h+=`<div class="c">${e}</div>`}}W.innerHTML=h}
-$("#bconf").onclick=()=>{const d=workdays[bk.w];renderWeek({c:bk.w,r:slotRow(bk.t),s:bk.s});const t=$("#btoast");t.style.display="block";t.innerHTML=`<b>&#10003; Booked:</b> ${esc(bk.s)}, ${d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})} at ${bk.t}.<br>Confirmation text sent to the customer (simulated). Reminder scheduled 24 hours before.`;$("#bconf").disabled=true};
+$("#bdemo").onclick=()=>{const f=$("#bdet");for(const k in DEMO_C)f.elements[k].value=DEMO_C[k];$$("input",f).forEach(i=>i.classList.remove("bad"));$("#berr").textContent=""};
+$("#bconf").onclick=()=>{const f=$("#bdet"),v={};["name","addr","email","phone"].forEach(k=>v[k]=f.elements[k].value.trim().slice(0,80));
+ const bad=[];if(v.name.length<2)bad.push(["name","name"]);if(v.addr.length<5||!/\d/.test(v.addr))bad.push(["addr","service address"]);if(!vEmail(v.email))bad.push(["email","valid email"]);if(!vPhone(v.phone))bad.push(["phone","10-digit phone"]);
+ $$("input",f).forEach(i=>i.classList.toggle("bad",bad.some(b=>b[0]===i.name)));
+ if(bad.length){$("#berr").textContent="Please add your "+bad.map(b=>b[1]).join(", ")+".";f.elements[bad[0][0]].focus();return}
+ $("#berr").textContent="";v.phone=fmtPhone(v.phone);const d=workdays[bk.w],ds=d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});
+ renderWeek({c:bk.w,r:slotRow(bk.t),s:bk.s+": "+v.name});const t=$("#btoast");t.style.display="block";
+ t.innerHTML=`<b>&#10003; Booked:</b> ${esc(bk.s)}, ${ds} at ${bk.t}.<div class="evd"><b>Calendar event: ${esc(bk.s)}: ${esc(v.name)}</b><span>Address: ${esc(v.addr)}</span><span>Phone: ${esc(v.phone)}</span><span>Email: ${esc(v.email)}</span></div><small>Simulated: confirmation to ${esc(v.email)} and ${esc(v.phone)}, reminder 24 hours before. Nothing is saved or sent.</small>`;$("#bconf").disabled=true};
 
 /* ===== 4 missed call ===== */
 let missRun=0;
@@ -118,7 +144,9 @@ async function playMiss(){const id=++missRun,sc=$("#mscr");$$(".bub",sc).forEach
  try{await step(0,500);await step(1,1100);$("#mcard").classList.add("show");await step(2,1400);
  bub("Hi, this is Example Plumbing Co. Sorry we missed your call! How can we help? Reply STOP to opt out.","r");await step(3,2000);
  bub("Hi! Our toilet keeps running and the shutoff valve is stuck. Can someone come this week?","l");await sleep(1600);if(id!==missRun)return;
- bub("Yes! I can do Thursday at 10 AM. Want me to lock that in?","r");await sleep(1400);if(id!==missRun)return;bub("Perfect, thank you!","l");await step(4,600)}catch(e){}}
+ bub("Yes! I can do Thursday at 10 AM. To book it, please reply with your full name, service address, and email.","r");await sleep(1600);if(id!==missRun)return;
+ bub("Jordan M., 123 Example St, Lehi, jordan@example.com","l");await sleep(1500);if(id!==missRun)return;
+ bub("Booked: Thursday 10 AM for Jordan M. at 123 Example St, Lehi. Confirmation sent to jordan@example.com and (555) 010-0177.","r");await sleep(1200);if(id!==missRun)return;bub("Perfect, thank you!","l");await step(4,600)}catch(e){}}
 
 /* ===== sliders ===== */
 function slider(wrap,handle,clipEl){let on=false;const set=x=>{const r=wrap.getBoundingClientRect();let p=Math.max(2,Math.min(98,(x-r.left)/r.width*100));handle.style.left=p+"%";clipEl.style.clipPath=`inset(0 0 0 ${p}%)`};

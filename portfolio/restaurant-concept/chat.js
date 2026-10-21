@@ -61,10 +61,15 @@ function answer(raw){
 function booking(raw){
  const v=raw.trim();
  if(/^cancel$/i.test(v)){flow=null;return bot('No problem, request canceled. Anything else?')}
- if(flow==='name'){bk.name=v;flow='date';return bot(`Thanks, ${esc(v.split(' ')[0])}! <b>What date are you thinking?</b>`,['This Friday','Next Saturday','Not sure yet','Cancel'])}
+ if(flow==='name'){if(v.length<2)return bot('<b>What name should it go under?</b>',['Cancel']);bk.name=v.slice(0,60);flow='date';return bot(`Thanks, ${esc(v.split(' ')[0])}! <b>What date are you thinking?</b>`,['This Friday','Next Saturday','Not sure yet','Cancel'])}
  if(flow==='date'){bk.date=v;flow='size';return bot(`Got it. <b>About how many people?</b>`,['10 to 20','20 to 40','40+','Cancel'])}
- if(flow==='size'){bk.size=v;flow=null;return bot(`<div class="bkc__ok"><h4>Request ready (demo)</h4>Name: <b>${esc(bk.name)}</b><br>Date: <b>${esc(bk.date)}</b><br>Party size: <b>${esc(bk.size)}</b><br><br><span class="verify">DEMO</span> This is a sample. Nothing was sent. On the live site, this request would go straight to the manager with a text alert, and you'd get a confirmation.</div>`)}
+ if(flow==='size'){bk.size=v;flow='email';return bot(`Great. <b>What email should the confirmation go to?</b>`,['Use demo info','Cancel'])}
+ if(/^use demo info$/i.test(v)){Object.assign(bk,{email:'jordan@example.com',phone:'(555) 010-0177',addr:'123 Example St, Lehi'});flow=null;return done()}
+ if(flow==='email'){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))return bot(`Hmm, that doesn't look like an email. Try something like <b>you@example.com</b>.`,['Cancel']);bk.email=v.slice(0,80);flow='phone';return bot(`Thanks. <b>Best phone number for the manager to reach you?</b>`,['Cancel'])}
+ if(flow==='phone'){const d=v.replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');if(d.length!==10)return bot(`Please send a 10-digit phone number, like <b>(555) 010-0000</b>.`,['Cancel']);bk.phone=`(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;flow='addr';return bot(`Last one, and it's optional: <b>your address</b> (handy for catering or invoices). Or tap Skip.`,['Skip','Cancel'])}
+ if(flow==='addr'){bk.addr=/^skip$/i.test(v)?'':v.slice(0,100);flow=null;return done()}
 }
+function done(){return bot(`<div class="bkc__ok"><h4>Request ready (demo)</h4>Name: <b>${esc(bk.name)}</b><br>Date: <b>${esc(bk.date)}</b><br>Party size: <b>${esc(bk.size)}</b><br>Email: <b>${esc(bk.email)}</b><br>Phone: <b>${esc(bk.phone)}</b><br>Address: <b>${bk.addr?esc(bk.addr):'Not provided'}</b><br><br><span class="verify">DEMO</span> This is a sample. Nothing was sent. On the live site, this request would go straight to the manager's calendar with a text alert, and you'd get a confirmation by email and text.</div>`)}
 function send(v){v=v.trim();if(!v)return;add(esc(v),1);inp.value='';answer(v)}
 $('.bkc__form').onsubmit=e=>{e.preventDefault();send(inp.value)};
 })();
