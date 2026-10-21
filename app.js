@@ -51,12 +51,15 @@ hours:{t:"We're open Mon to Sat, 7 AM to 6 PM, and we take emergency calls 24/7.
 drain:{t:"Yes! Drain cleaning starts at $129 for most sinks and tubs (example price). Main line clogs are quoted on site. Want to book a visit?",o:{"Yes, book me":"city","My water heater is leaking":"wh"}},
 wh:{t:"Sorry to hear that. Quick question so the tech comes prepared: is water actively pooling right now?",o:{"Yes, a lot":"urg","Just a small drip":"city"}},
 urg:{t:"Got it. If you can, turn the cold water valve on top of the heater to off. I'm flagging this as urgent so the owner sees it right away.",o:{"Ok, done":"city"}},
-city:{t:"What city are you in? We serve all of Utah County.",o:{"North side":"slot","South side":"slot","Downtown":"slot"}},
+city:{t:"We serve the whole Wasatch Front, from Salt Lake to Provo. What city are you in?",o:{"Salt Lake City":"slot","Sandy":"slot","Draper":"slot","Lehi":"slot","American Fork":"slot","Orem":"slot","Provo":"slot","Other city (type it)":"cityfree"}},
 slot:{t:"Here are the next open times:",o:{"Today 4:00 PM":"name","Tomorrow 8:00 AM":"name","Tomorrow 1:00 PM":"name"}},
 name:{t:"Perfect. Last thing: what's your name and best number? (Tap below for the demo.)",o:{"Jenna R., (555) 010-0142":"done"}},
 done:{t:"",o:{"Start over":"start"}}};
 let chatCtx={};
-async function chatStep(k,ans){const id=chatRun;if(k==="slot"||k==="name"){if(ans&&/North|South|Downtown/.test(ans))chatCtx.city=ans}if(k==="name")chatCtx.time=ans;
+const CITY_KEYS=Object.keys(FLOW.city.o).filter(c=>FLOW.city.o[c]==="slot");
+function cityInput(){const id=chatRun;chips.innerHTML='<input id="chatcity" type="text" placeholder="Type your city" aria-label="Your city" style="flex:1;min-width:140px;padding:8px 12px;border-radius:999px;border:1px solid rgba(127,127,127,.4);font:inherit;background:transparent;color:inherit"><button id="chatcitygo">Send</button>';const inp=$("#chatcity");inp.focus();const go=()=>{const v=inp.value.trim().slice(0,40);if(!v||id!==chatRun)return;chips.innerHTML="";addMsg(esc(v),"u");chatCtx.city=v;chatStep("slot",v)};$("#chatcitygo").onclick=go;inp.onkeydown=e=>{if(e.key==="Enter")go()}}
+async function chatStep(k,ans){const id=chatRun;if(k==="cityfree"){cityInput();return}if(k==="slot"&&ans&&CITY_KEYS.includes(ans))chatCtx.city=ans;if(k==="name")chatCtx.time=ans;
+ if(k==="slot"&&chatCtx.city){await bot(`Great, we cover ${esc(chatCtx.city)}.`,"",id);if(id!==chatRun)return}
  if(k==="done"){await bot(`<b>&#10003; You're booked!</b><br>${esc(chatCtx.time||"Tomorrow 8:00 AM")} &#183; ${esc(chatCtx.city||"Utah County")}<br>Water heater / plumbing visit<br><small>Confirmation text sent to (555) 010-0142. The owner got your details too.</small>`,"card",id)}
  else await bot(FLOW[k].t,"",id);if(id!==chatRun)return;
  setChips(Object.keys(FLOW[k].o),o=>{const nx=FLOW[k].o[o];if(nx==="start"){resetChat();return}chatStep(nx,o)})}
