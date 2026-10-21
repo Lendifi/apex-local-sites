@@ -1,0 +1,129 @@
+THE BREAK mockup image sources (collected 2026-10-16 MT)
+
+NOTE: menu-*.webp photos were resized and had their black backgrounds cleaned up (levels + dark-noise mask). No other edits.
+
+== THEIR OWN: from their current website (thebreaksaratogasprings.com, hosted on media.base44.com / base44.app) ==
+img/menu-bk-breakfast-burrito.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/f363582aa_BreakfastBurrito1.PNG
+img/menu-country-fried-mac.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/bc7d5a385_faffe2ae4_3fb8063030a8858273d1686a7c75618ad5f32a082aefe87de51a5b1020254f86.png
+img/menu-sweet-spicy-chicken-waffles.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/deeda843d_ChickenWaffles.PNG
+img/menu-carne-asada-bowl.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/e9bfe6961_CarneAsadaBowl.PNG
+img/menu-ham-steak-breakfast.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4a50790a1_HamSteakandEggs.PNG
+img/menu-country-fried-steak.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4f4c230e2_Countryfried.PNG
+img/menu-traditional-eggs-benedict.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/b9ca32f35_Eggs_Benedict-removebg-preview.png
+img/menu-fresh-fruit-cottage-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/dafc432e1_FruitandCottageCheese.PNG
+img/menu-buttermilk-pancakes.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/d0d81a457_Pancakes.PNG
+img/menu-french-toast.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/7654bba1b_FrenchToast.PNG
+img/menu-pancake-sticks.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/e2e06cc83_PancakeSticks.PNG
+img/menu-sunrise-breakfast-board.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/175b6ac0d_SunriseBreakfastBoard.PNG
+img/menu-apple-tart-caramel-blossom.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/b35897b50_a8a23113d_9fa78a2cd542cfc477b9611b9eb3ed8e1cc450cb624e7c6cbf6dd2ecde3203ae.png
+img/menu-brown-butter-cake.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/68e25e613_cd075ef46_0b6a1b06a348a3285ee35e7dda8c7df2a60c319fc402099c6319a85d0ef2db1d.png
+img/menu-cinnamon-sugar-pretzel-bites.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/317afe5af_20bd1df8f_f9bf5a9779f873643f4102e6b60fe1a7110379c4995bd228534c1926f20d7106.png
+img/menu-new-york-cheesecake.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/097c5ff9d_9435f95ba_3d482ebed177bb802003ea22b365643bfd0e8c975d51a931732e422a3de1a99d.png
+img/menu-chimichurri-steak-sandwich.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/6902e5502_c1f79c043_ffce852550fcf58d68ff142b4500c0cc5d05c5c958b1fce1b2c7a3352e2a923c.png
+img/menu-club.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/11e24e086_2d8d3d4be_da250ae6b40a77a528eba1637778c9e4c11cdc1b93b07bb956d161645af732b4.png
+img/menu-el-cubano.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/221fb3e99_6030397cc_80e5b62dadc70800c0fccfa49b92d4062f91467613119158c87acdd42414b6a7.png
+img/menu-french-dip.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/aad66c486_35e99ba2b_d07f8850fe593360bc642651f306ae863f5733f473fe54d3390fa9941e77c7b4.png
+img/menu-jalapeno-cheesesteak.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/99a748b9f_c6eee6534_1543d40239127a55307c89e46a3243de81a270766289ede59f0ca1bf6b89d72b.png
+img/menu-slc-cheesesteak.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/12958b936_33c9c2284_d13fa94da9d09860a3c48bf2bb1e9b208f56ccc23200191e2dc14ae9a5859bcf.png
+img/menu-turkey-avocado.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/1e3dfa8f9_6bd6aebe8_d588043483558788df206bb39ab58f52e2bb258b978378745b240680e8821d3f.png
+img/menu-turkey-cranberry-sandwich.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/a9771225b_e50c02da5_720b2d3de13c7e74743c00bd92d4458fd337beb99afdc84dbc69c7c6fac23cbc.png
+img/menu-buffalo-wrap.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/2b9dacdf6_1d0d57c59_47c320563319dd501f83dc529454836c26398485ca7ce5d4625536479d854fcd.png
+img/menu-chicken-bacon-ranch-sandwich.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c0e0421af_6ae85f5d4_1975e7a7247de411481159913fd9ffe1f581e0b52fcd05efa63e75cf55ee111a.png
+img/menu-buffalo-chicken-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/f29cf5547_8bc79ee78_8c86e662a18b190f1558633cab5e37dc515d0e754a668c9afd4cf443549cbdd7.png
+img/menu-cobb-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/e621c1548_IMG_0014.png
+img/menu-coconut-shrimp-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/bfdf4ee57_88a1546c9_86f92750c6bc3f412932b93eb4536a99fd87e5c2417487be82ffb0172f50bc92.png
+img/menu-dinner-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/fa070db7f_c63021853_ddd8391a86f05523b258e62aca2c87d11b2105918e8d982e892ff192a759b66d.png
+img/menu-greek-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4329d7025_502f7e884_47b30d90a674d0320ebead4ce95c1c0c92c312aacfd2a57d26ba57f1eecdcde6.png
+img/menu-steakhouse-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/2fe4d5c14_10c54582b_56384b8cc17ec0c8505c732c6f9bcdc3d27602cd423ac0e3a497b143dea60bf5.png
+img/menu-taco-salad.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/2712e52f5_e14b5f6c8_543a407cb732b32993b339986ab228244a4e55a8c66778ebfb4503be64f87315.png
+img/menu-ahi-tacos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/71584ee47_b94736f5a_c7dc138fb5bedf60c8968178970f3c790a5d2fd6028160db4bbdea873073d00f.png
+img/menu-beer-battered-fish-tacos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/cd076b7a2_e7936d545_28d48f1068085f534ea86bbb3f68072a9b16cdf704f9e11eae347820ec14faf7.png
+img/menu-birria-tacos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4c0286562_1e0b57fab_466b76f40c708192ba6b39342a9d5e8155cac00f44e249908d8948facac19ab4.png
+img/menu-burnt-ends-tacos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/6221241fc_dcdf4d6f7_78b47d071f3cdd1219d7c9789d02805435061c6f70c6f1003b28c7d61d18859a.png
+img/menu-chicken-tenders-basket.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/141661022_d657b12f4_2e77f63d04b28c59df8b56753adfea8ff07d345880697e3ac89929b7ac2a95e1.png
+img/menu-coconut-shrimp-tacos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/6a7f81023_84131fe71_131b4a78c0cff86146e2e5c9020768e1cc56839f569b74fa6d61177421d4342f.png
+img/menu-fish-n-chips.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4725a90b7_ed2d8c947_c9c04da8339c9ebc1563d604a5c495d2b5badb3193e882a1bfe5ea5beba2684f.png
+img/menu-orange-chicken-bowl.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4ab25646b_196b96107_1b61d5cdd0bdd1bf13aba6280ad0f36430e53e55c248c49eadcf4a224da7b69a.png
+img/menu-steak-teriyaki-bowl.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/3eb67541f_1f39cdf5d_c30426ca4928fcff474be7b119496089daec214d7c275384865fe1baa8da50dd.png
+img/menu-street-tacos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c54647ee0_aa600385c_eff073f56944a6e4ad2d9d7835b0caff297af5e1e6fa53805d58021cc608e426.png
+img/menu-teriyaki-chicken-bowl.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/0cfdc471f_6bc113871_568c1fe2d4e46c14bf5fbfe3decfda979e78b917a8dc6b3b283b6ec510c8e65c.png
+img/menu-ahi-poke-bowl.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/3e836af3b_d58b432c3_03a74154090a7a85c087bd2f528d8c0c55442596f14b4d9b446c9d035670d565.png
+img/menu-bacon-avocado-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/f86edf865_e26190e18_4c1857b4e546490ebcdb0d8263b7fcab73772e93de68690b478150b0014cfcbc.png
+img/menu-garlic-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4c9b95986_a7e534aab_68bdf03eaf2b72ca337c371a5a4df76674b16e5517c7df5a1ba3bad7cfda9cfe.png
+img/menu-green-chili-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/778231af2_1fe1b9b09_eda1b8699e6a3d8ccd4f0e7781d624c8a4c54d2147bc97a89a737f3dc4df051e.png
+img/menu-mushroom-swiss-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/745389dd1_bcec923be_fe71763cd97efdc6f1e8f0f1eee1228decc0f78ae388ba60c59c69333c484cd5.png
+img/menu-spicy-guacamole-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/3b1a57773_50153e497_51a8b587c22b883d501c2ac88140657910abe4479232687edb8f400a094bd883.png
+img/menu-steakhouse-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/4ba19f8f0_1098be378_8d90720785b1f7d40b2b88436ec6abe63a0cd67253fcfa0f9cc7750f0f3fdf5c.png
+img/menu-traditional-cheese-burger.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/f63f63037_1f46a93f7_2d0f5783b8977132bac9ced63aabd56604f2bec3b94e60bc46c929f3c2305ac1.png
+img/menu-ahi-tuna-nachos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/200cd154b_f5669f350_101c8644c17d67ef6ab8c44b325ffe695cd538c8302069f4ce9c35a8e88c25b4.png
+img/menu-asian-chicken-lettuce-wraps.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/dff9bdbd5_56f5d304b_a8c8b3a174d01d8ae17626657a6be497a77e4133d6a45582797990d6f991de14.png
+img/menu-asian-pot-stickers.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/9448302d4_e6547ba55_76bc7d0e7797985491a89ddf61a47537e9e8a757d55966e37c497eb0ac52e285.png
+img/menu-bbq-burnt-end-nachos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c5892471c_365fe9cb2_c8c1e97f6c0e37ad17aca3247dc0099a7372dbee14147b699f347d4431456803.png
+img/menu-break-sampler.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/77a984529_0fda9e738_870d9cdc6b0b32d61356dec046190e9a0d0824b25f65edb1c060e2615e79e4bd.png
+img/menu-chip-trifecta-sampler.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/a1812e6c9_182413b98_ed22576f801dfdd76b6402f4981cc63b20bf1e409e54f9277b1610167e0831b1.png
+img/menu-chips-queso.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/0b8c63938_d5fbba88f_a2a4d76b9a48afb12b3e268eddff8c1bb45b66c94d249079c083bab75f6ba749.png
+img/menu-chips-salsa.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/9e8c28aae_9a9e6ca67_1a74de27eacc0da8579e78aecfe6d89215c1bf6bed538f225f9edf982da74e16.png
+img/menu-crispy-garlic-cheese-curds.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/a5066e316_93305ad0d_914179ac268555f2f78e3fdd499a1a3903a48d23700c3a722cfc3c1fdf231776.png
+img/menu-edamame.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/39aca0c00_b41dfb284_28022f079030e4c60da8e81bd2d6f1670c20c8ba12c916a63d67390e95036665.png
+img/menu-french-fries.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/7e4eeb6ac_0a956b630_27c7d06a9f9e63119d8c64f571a60cf5f582dad4a155cbbfac54b382534b0f10.png
+img/menu-loaded-tater-tots.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/71c600976_7ed4c3e37_042bb5c6811e09a80f460a46cf958c09acdae56f46d006f35b5277ffb0e51c93.png
+img/menu-onion-rings.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/49002ab7c_58ffc35c1_6314280da49ff4e1ef48345cf60869a9dcdeca0995a57217b494840dbb1a837d.png
+img/menu-philly-egg-rolls.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/ffda53ad9_8888a47ea_ceaa3f78e2238b610f7b907312ea8895c28ee03afb8c3f861f84ba267ec9cd4d.png
+img/menu-pickle-fries.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/0eb03d1bb_161823b79_6448069c200ee9eabbdea43a6297710995d4188a65504f64498391221e925062.png
+img/menu-pretzel-bites.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/5a6f14281_4d0de01ec_04db7d62316844d85659c65b36a03ad2b7785ed277b13808b11aedf085293ac2.png
+img/menu-soda-row-steak-strips.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/90f01460b_3cd449a77_fbbe9574fffcd326f3a739d6d6e2769cb3e6c6dbb5954848283e0d66b7e85861.png
+img/menu-spinach-artichoke-dip.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/060836873_eaac2106c_2055eeded389073a8d601259eaf19c22617c24af1851a2f4d74a29517a068ecf.png
+img/menu-sweet-potato-fries.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c24fa4562_c08f5760d_c1ff2f1af9901285c43edb9eedc5c7a5f9c879a4b4ba3a67f7ba8dedf2c48452.png
+img/menu-tator-tots.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/e87c15a26_44650d435_2eb2e8709d15647ba392c2e561a61d70dc9afc3e904298a5a650fe00d9d708b5.png
+img/menu-the-break-nachos.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/2897e912b_620a03101_643c2c9cd61d4f0c22cdd30b26cd2513a73ffd72b062cfec2d168af3214b6f6d.png
+img/menu-wings-bone-in.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/51daab999_35812c204_cae85fb366dc516df84332603ab1d957864468c409664f73df179bf9ae9b3458.png
+img/menu-wings-boneless.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/809bb5ed3_1908475b5_dacf60df22457c4e5ef2459cabf807fb657d84d89638c2505bc847407792eace.png
+img/menu-loaded-mac-n-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/3937def11_5223c1ba1_8c2cd6f815675fc43400b8db7f003f9e172aaaf9be46e34695d814aa684d41d1.png
+img/menu-lobster-mac-n-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/e9eb7dd7c_d76d7c298_9809a2138409b47d49289e73f933ecb1d8325509c94b45f6f480365ccb41deec.png
+img/menu-mac-n-cheese-sampler.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c5d3361d1_a49f54d1a_9e31b1693314470809760960cfcff0ed1c21261f7e91de71e6bad585efd8a626.png
+img/menu-surf-turf-mac-n-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/bbf100f7a_84ae2aeba_0591bcf4159258d37614c956c3dc963320d6c9c04671ae32e52a2b9852e01dbb.png
+img/menu-the-break-mac-n-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/dc390119f_fe40aecf2_23a5a1521da8f492a03d70e84424230c86cf836df3a4588b204f666e638c3693.png
+img/menu-buffalo-mac-n-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/898d706b9_2e9d9b9fe_197343aebd7f9c892d4173cf61719081d5b78d79d255355e7cca2fefc29dab98.png
+img/menu-burnt-ends-mac-n-cheese.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/89b0c1504_b29ca95c7_09caa5f487059057474e81f16c7663edc693303e671c2caf8a7b27082fc870c6.png
+img/menu-belgian-waffles.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c70439132_cf1f5e71f_2287a45caef4a08d16d0a5298171bf23dfd3bd116df32b4028f38dcb4790188e.png
+img/menu-biscuits-gravy.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/48330c437_696c145f4_d6c15a716612d8f8621ef9302fe3d4a05fd2bbaa71c0ebd8bf21e5cbbc172799.png
+img/menu-breakfast-tots.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/c33406777_06e3ebb5f_ed9ac625ea2d821993b16babce77bc84cc748d01e2b550a840be4493ddb0bc39.png
+img/menu-two-egg-breakfast.webp	https://base44.app/api/apps/6a29989fbea83901c3a68569/files/mp/public/6a29989fbea83901c3a68569/424711df8_eeae5eb46_703b4bce4998a8cb6e54d5e55ee829ccb48c07d52093cdb5868564a8fef70a33.png
+img/site-logo-bkfull.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/30cfd532a_BKfull.png
+img/site-hero-bar-interior.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/b00ff350b_UNracked-1.jpg
+img/site-private-events-bg.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/a5473d0da_50afc60c-694d-4c1a-8ad2-639e90470365.png
+img/site-private-events.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/c18637d9b_50afc60c-694d-4c1a-8ad2-639e90470365.png
+img/site-karaoke.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/4daf22fc5_Screenshot2026-06-10at41127PM.png
+img/site-bingo.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/9833860ad_download.jpg
+img/site-pool-tables.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/4ebe02122_4ebbdd68-1250-48f7-a8ca-d3e86b71786f.png
+img/site-wine-tasting.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/45c5a5396_Screenshot2026-06-10at41320PM.png
+img/site-menu-bg-1.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/b34746edc_3b0e13cf-69e8-48df-a085-b7480a82f19f.png  [on their site; looks styled/possibly AI-generated, not used in mockup]
+img/site-menu-bg-2.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/fcc60d27b_65c2731b-6034-4e5a-850f-b0894aa3ded9.png  [on their site; looks styled/possibly AI-generated, not used in mockup]
+img/site-events-img-3231.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/8bb1c8b4b_IMG_3231.jpeg
+img/site-events-img-6906.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/e5d53094e_IMG_6906.JPEG
+img/site-events-screenshot.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/2b8110a55_Screenshot2025-08-13at13616PM.jpeg
+img/site-flyer-brunch-bingo.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/3fca95056_BrunchBingo1.png
+img/site-flyer-poker.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/bb2e9550c_PokerNight1.png
+img/site-flyer-karaoke.webp	https://media.base44.com/images/public/6a29989fbea83901c3a68569/af02c0be3_GoldenKaraokeNightInvitationInstagramStoryMobileVideo.png
+img/site-video-atmosphere.mp4	https://media.base44.com/videos/public/6a29989fbea83901c3a68569/d293b6970_copy_12A56487-6932-4397-B411-F59AFBD24E87.MOV
+img/site-video-poster.jpg	frame at 15s from site-video-atmosphere (their drone video, above)
+img/site-video-exterior.jpg	frame at 1.5s from site-video-atmosphere (their drone video, above)
+img/site-video-atmosphere.mp4	transcoded (1280w, no audio) from their homepage .MOV above
+
+== GOOGLE MAPS listing photos (The Break Sports Grill Saratoga Springs). Uploader not confirmed: could be owner or customers. VERIFY rights before real use ==
+img/gbp-01.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QAUsabtyp06aNQT7yGJ1j6J2DqUpWK-EcWTp-bv9a4z8VOF0Hl7665LlCGm1U7HB1dlPmcpXasytFT0SIGe4XF-4qmkUMV_8vazUft0J92g2rRq9Vit-Lmnx1UYC1qRUPT5DIaebgAvejR=s1600
+img/gbp-02.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QJZhA9qYn9NykF1x9GmHHkYvoqrLZmPm4deQDOtujnr5DhmLQ3jej3ivZ0z8XtDugKSmTyLwNNxe4O-l__JrFBBqXKoPeVnzqj8ar51QTQMr5NE9dE2O3SauLUe4NSuhq1RpRjZ1Q0Aog=s1600
+img/gbp-03.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QgiQyM1OqDFP4cALmy8kzhmiqQ1nKlmCv1R4LKHTjzx4IwLfN7BGmKSJi8T0l_ryLLVBorMx-cJERNrn4nLvTyUHY25PFWr4X461sW3DFf6OCpT1a2byBAyc1rM0T0M83r67k48IMqgNVU=s1600
+img/gbp-04.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RT9fqQSFbwFn4TR5V1q_1iybMnSx8dVjjRBptX-dAp5X2nk4DSgGJJVLyxZSfSH1ef86qUjVCzgJuYnWu7TD6cjnXok6oD77suWnOCMi3YtGEL36wru6j7fL0l5Wr7IMknYgyKxvMun3o=s1600
+img/gbp-05.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RugCT5Nf8X9rUMGIeMFmW9rTwvhA6Vpvf9KJXLR2SPjNs8_xsxcODT3p0-UkqLPOScDLudnBac7ekCrPWkLQwAZSzmk89xu4Xwi3Ngm92EvMSnbkcA4_LUMC2sjXU_bk8t3cLExJvkmMI=s1600
+img/gbp-06.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Sor7r_5VjS9ST_aSjUbXGMZMj9yx8oT5YHIs7oLhr-soNWaljkkSRzKDydP1A8TyV39z8v0REICBZgVuMqZbm24PP2pg643ircEWKRa_GInjclmMCf5w0mmC0aB1_idts0d5r042mnQbj2=s1600
+img/gbp-07.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T1mbUD5mPAZl5OcGv8HyipHMluNqQmGRkmz0QIu63huL2RT9IsHZ1gppdkWk5nTQusZXoGV3ncSF4R_56DZILqGgyqM7v44jS5WZuLq5JDNu_dvKZQDHxqeiXZ6oJlCAcOcYlxxzjgY8fo=s1600
+img/gbp-08.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TH5x0x1rOn-tTQY2ry94CUS_ZL1fcmyX_V97czNRD1jPuEddlRSzK96dQg34tsZvTiKwEE0wWniGe3FLihdJahF397BOoCtYtdjRxvkGn27pyKV1HDzXh9mzoAjK-CWlNPJrzYGR6ICIE=s1600
+img/gbp-09.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TLk1UAG86FiqN3LUsYh3kC4Mo0klXMh8_0TD9EKjZqttCbEwV_NG1P8X9PnizUyCYhZ8y_TnRS05f5hLoE5dtDZzHjRBbaWOEzVQyr7Y9fbxk9d6F4Ih7ERbiK1bGlfj7zVtfapgbGQnia=s1600
+img/gbp-10.webp	https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRw8igKo99lolsa9LSvVF6Sm-YfNwk0c0QeVYaJ9VC98C8sfh4jFSEZZsifgZDBC9wFwTFvOMMu2e7m1_y1LaMft0PMRRNRKM7cX4b7gHNth2juxuuReFMAtSidf99rBDRe6RgCmwUbNpy=s1600
+
+== STOCK ==
+None used.
+
+== USED IN MOCKUP BUT NOT THEIRS ==
+None. (Their current site also uses 7 Unsplash stock photos for event tiles; those were NOT downloaded or used.)
