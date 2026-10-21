@@ -1,4 +1,2 @@
-No stock photography is used on this site. All graphics are inline SVG and CSS.
-break.jpg - screenshot of our own concept redesign mockup for The Break (portfolio/the-break), photos in that mockup come from the business's own public site/GBP.
-cove.jpg - screenshot of our own concept redesign mockup for Cove Mountain (portfolio/cove-mountain-v2). See that folder for its image sources.
-Fonts: Fraunces and Inter (SIL Open Font License, Google Fonts), self-hosted in /fonts.
+restaurant.jpg - screenshot of our Sports Bar & Grill concept (portfolio/restaurant-concept). Fictional name and menu; photos reused from a real business with names removed.
+contractor.jpg - screenshot of our Home Services Contractor concept (portfolio/contractor-concept). Fictional name; photos are free Unsplash stock.

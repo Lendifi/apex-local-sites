@@ -46,18 +46,18 @@ const chatbd=$("#chatbd"),chips=$("#chatchips");let chatRun=0;
 function addMsg(t,who,cls=""){const d=document.createElement("div");d.className="msg "+who+" "+cls;d.innerHTML=t;chatbd.appendChild(d);chatbd.scrollTop=chatbd.scrollHeight}
 async function bot(t,cls,id){const ty=document.createElement("div");ty.className="typing";ty.innerHTML="<i></i><i></i><i></i>";chatbd.appendChild(ty);chatbd.scrollTop=chatbd.scrollHeight;await sleep(700+Math.min(t.length*8,900));ty.remove();if(id!==chatRun)return;addMsg(t,"b",cls)}
 function setChips(opts,cb){chips.innerHTML="";opts.forEach(o=>{const b=document.createElement("button");b.textContent=o;b.onclick=()=>{chips.innerHTML="";addMsg(esc(o),"u");cb(o)};chips.appendChild(b)})}
-const FLOW={start:{t:"Hi! I'm the AI assistant for Summit Peak Plumbing. I can answer questions or get you booked. What's going on?",o:{"My water heater is leaking":"wh","Do you do drain cleaning?":"drain","What are your hours?":"hours"}},
+const FLOW={start:{t:"Hi! I'm the AI assistant for Example Plumbing Co. I can answer questions or get you booked. What's going on?",o:{"My water heater is leaking":"wh","Do you do drain cleaning?":"drain","What are your hours?":"hours"}},
 hours:{t:"We're open Mon to Sat, 7 AM to 6 PM, and we take emergency calls 24/7. Want me to get you on the schedule?",o:{"Yes, book me":"city","Do you do drain cleaning?":"drain"}},
 drain:{t:"Yes! Drain cleaning starts at $129 for most sinks and tubs (example price). Main line clogs are quoted on site. Want to book a visit?",o:{"Yes, book me":"city","My water heater is leaking":"wh"}},
 wh:{t:"Sorry to hear that. Quick question so the tech comes prepared: is water actively pooling right now?",o:{"Yes, a lot":"urg","Just a small drip":"city"}},
 urg:{t:"Got it. If you can, turn the cold water valve on top of the heater to off. I'm flagging this as urgent so the owner sees it right away.",o:{"Ok, done":"city"}},
-city:{t:"What city are you in? We serve Lehi, Saratoga Springs, Eagle Mountain, American Fork, and nearby.",o:{"Lehi":"slot","Saratoga Springs":"slot","Eagle Mountain":"slot"}},
+city:{t:"What city are you in? We serve all of Utah County.",o:{"North side":"slot","South side":"slot","Downtown":"slot"}},
 slot:{t:"Here are the next open times:",o:{"Today 4:00 PM":"name","Tomorrow 8:00 AM":"name","Tomorrow 1:00 PM":"name"}},
-name:{t:"Perfect. Last thing: what's your name and best number? (Tap below for the demo.)",o:{"Jenna, (801) 555-0142":"done"}},
+name:{t:"Perfect. Last thing: what's your name and best number? (Tap below for the demo.)",o:{"Jenna R., (555) 010-0142":"done"}},
 done:{t:"",o:{"Start over":"start"}}};
 let chatCtx={};
-async function chatStep(k,ans){const id=chatRun;if(k==="slot"||k==="name"){if(ans&&/Lehi|Saratoga|Eagle/.test(ans))chatCtx.city=ans}if(k==="name")chatCtx.time=ans;
- if(k==="done"){await bot(`<b>&#10003; You're booked!</b><br>${esc(chatCtx.time||"Tomorrow 8:00 AM")} &#183; ${esc(chatCtx.city||"Lehi")}<br>Water heater / plumbing visit<br><small>Confirmation text sent to (801) 555-0142. The owner got your details too.</small>`,"card",id)}
+async function chatStep(k,ans){const id=chatRun;if(k==="slot"||k==="name"){if(ans&&/North|South|Downtown/.test(ans))chatCtx.city=ans}if(k==="name")chatCtx.time=ans;
+ if(k==="done"){await bot(`<b>&#10003; You're booked!</b><br>${esc(chatCtx.time||"Tomorrow 8:00 AM")} &#183; ${esc(chatCtx.city||"Utah County")}<br>Water heater / plumbing visit<br><small>Confirmation text sent to (555) 010-0142. The owner got your details too.</small>`,"card",id)}
  else await bot(FLOW[k].t,"",id);if(id!==chatRun)return;
  setChips(Object.keys(FLOW[k].o),o=>{const nx=FLOW[k].o[o];if(nx==="start"){resetChat();return}chatStep(nx,o)})}
 function resetChat(){chatRun++;chatbd.innerHTML="";chips.innerHTML="";chatCtx={};chatStep("start")}
@@ -65,10 +65,10 @@ function resetChat(){chatRun++;chatbd.innerHTML="";chips.innerHTML="";chatCtx={}
 /* ===== 2 call demo ===== */
 const wave=$("#wave");for(let i=0;i<22;i++)wave.appendChild(document.createElement("i"));
 let callRun=0,waveT=null,timerT=null;
-const CALL=[["ai","Thanks for calling Summit Peak Plumbing. This is Summit Peak's AI assistant. I can help you schedule or answer questions. How can I help?"],
+const CALL=[["ai","Thanks for calling Example Plumbing Co. This is Example Plumbing's AI assistant. I can help you schedule or answer questions. How can I help?"],
 ["c","Hi, my kitchen sink is backing up and it smells pretty bad."],["ai","Sorry about that. I can get a plumber out. Can I get your name?"],
-["c","Mike Torres.",{name:"Mike Torres"}],["ai","Thanks Mike. Is the number you're calling from the best one to reach you?"],["c","Yep, this one.",{phone:"(801) 555-0199"}],
-["ai","Great. What's the service address?"],["c","2847 North Ridge Drive in Lehi.",{addr:"2847 N Ridge Dr, Lehi"}],
+["c","Mike T..",{name:"Mike T."}],["ai","Thanks Mike. Is the number you're calling from the best one to reach you?"],["c","Yep, this one.",{phone:"(555) 010-0199"}],
+["ai","Great. What's the service address?"],["c","123 Example Street.",{addr:"123 Example St"}],
 ["ai","Is water overflowing onto the floor, or is it just slow and backing up?",{job:"Kitchen sink backup, odor"}],["c","Just backing up. Not flooding.",{urg:"Standard (not flooding)"}],
 ["ai","Okay. I have tomorrow at 9 AM or 1 PM open. Which works better?"],["c","9 works.",{appt:"Tomorrow 9:00 AM"}],
 ["ai","You're booked for tomorrow at 9 AM. You'll get a text confirmation, and the tech will text when he's on the way. Anything else?"],["c","Nope, that's it. Thanks!"],["ai","Thanks Mike, have a good night."]];
@@ -81,7 +81,7 @@ async function playCall(){resetCall();const id=callRun,ts=$("#tscript");ts.inner
   if(cap)for(const k in cap){const d=$(`#capt [data-k="${k}"]`);$("b",d).textContent=cap[k];d.classList.add("got")}
   waveOn(false);await sleep(350)}
  clearInterval(timerT);$("#cstat").textContent="Call ended \u00b7 booked";
- $("#osmsb").innerHTML="New booking: Mike Torres, (801) 555-0199. Kitchen sink backup, not flooding. 2847 N Ridge Dr, Lehi. Tomorrow 9:00 AM. Full transcript in your dashboard.";$("#osms").classList.add("show")}
+ $("#osmsb").innerHTML="New booking: Mike T., (555) 010-0199. Kitchen sink backup, not flooding. 123 Example St. Tomorrow 9:00 AM. Full transcript in your dashboard.";$("#osms").classList.add("show")}
 $("#callgo").onclick=playCall;
 
 /* ===== 3 booking ===== */
@@ -113,7 +113,7 @@ async function playMiss(){const id=++missRun,sc=$("#mscr");$$(".bub",sc).forEach
  const step=async(i,ms)=>{await sleep(ms);if(id!==missRun)throw 0;st[i].classList.add("on")};
  const bub=(t,side)=>{const b=document.createElement("div");b.className="bub "+side;b.textContent=t;sc.appendChild(b);requestAnimationFrame(()=>requestAnimationFrame(()=>b.classList.add("show")))};
  try{await step(0,500);await step(1,1100);$("#mcard").classList.add("show");await step(2,1400);
- bub("Hi, this is Summit Peak Plumbing. Sorry we missed your call! How can we help? Reply STOP to opt out.","r");await step(3,2000);
+ bub("Hi, this is Example Plumbing Co. Sorry we missed your call! How can we help? Reply STOP to opt out.","r");await step(3,2000);
  bub("Hi! Our toilet keeps running and the shutoff valve is stuck. Can someone come this week?","l");await sleep(1600);if(id!==missRun)return;
  bub("Yes! I can do Thursday at 10 AM. Want me to lock that in?","r");await sleep(1400);if(id!==missRun)return;bub("Perfect, thank you!","l");await step(4,600)}catch(e){}}
 

@@ -1,4 +1,4 @@
-/* The Break mockup. Sample by Apex Lead Group. */
+/* Fictional concept. Example data only. */
 (function(){
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,7 +47,7 @@ function go(i,user){
 }
 $('[data-prev]').onclick=()=>go(cur-1,true);$('[data-next]').onclick=()=>go(cur+1,true);
 go(0);
-window.breakHeroStop=()=>{clearInterval(timer);RMstop=true};
+window.heroStop=()=>{clearInterval(timer);RMstop=true};
 // tilt on pointer
 const stage=$('[data-stage]');
 if(!RM&&matchMedia('(pointer:fine)').matches){stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$('.stage__plates').style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translate(${x*14}px,${y*14}px)`});stage.addEventListener('pointerleave',()=>$('.stage__plates').style.transform='')}
@@ -66,7 +66,7 @@ function render(){
   const term=q.value.trim().toLowerCase();
   let list=term?M.filter(x=>(x.n+' '+x.d+' '+x.c).toLowerCase().includes(term)):(cat==='All'?M:M.filter(x=>x.c===cat));
   grid.innerHTML=list.length?list.map((x,i)=>`<article class="dish${(cat==='All'||term)&&x.c==='Favorites'?' dish--fav':''}" style="animation-delay:${Math.min(i,12)*40}ms">
-    <div class="dish__img">${x.img?`<img src="${x.img}" alt="${esc(x.n)}" loading="lazy" width="666" height="375">`:`<div class="dish__noimg">THE BREAK</div>`}</div>
+    <div class="dish__img">${x.img?`<img src="${x.img}" alt="${esc(x.n)}" loading="lazy" width="666" height="375">`:`<div class="dish__noimg">YOUR RESTAURANT</div>`}</div>
     <div class="dish__body"><div class="dish__top"><h3>${esc(x.n)}</h3>${x.p?`<span class="dish__price">$${x.p.toFixed(2)}</span>`:`<span class="verify">Ask</span>`}</div>
     <p>${esc(x.d||'')}</p>${x.t&&x.t.length?`<div class="dish__tags">${x.t.map(t=>`<span>${t}</span>`).join('')}</div>`:''}</div></article>`).join('')
   :`<p class="menu__empty">Nothing matches "${esc(term)}". Try burger, tacos or waffles.</p>`;
@@ -77,7 +77,7 @@ render();
 /* ---------- MAC LAB (real macs + real sampler price) ---------- */
 const macs=M.filter(x=>x.c==="Mac n' Cheese"&&!/Sampler/.test(x.n));
 const macBox=$('[data-macs]'),slots=$$('.sampler__slots span'),sampler=$('[data-sampler]'),mImg=$('[data-mac-img]'),mLab=$('[data-mac-label]');let picks=[];
-const short=n=>n.replace(/ Mac N' Cheese/i,'').replace("The Break","Classic");
+const short=n=>n.replace(/ Mac$/i,'');
 slots.forEach((s,i)=>s.textContent='Pick '+(i+1));
 macs.forEach(x=>{const b=document.createElement('button');b.className='mac';b.setAttribute('aria-pressed','false');b.innerHTML=`${esc(short(x.n))}<small>$${x.p.toFixed(2)} solo</small>`;
   b.onclick=()=>{const k=picks.indexOf(x);if(k>-1)picks.splice(k,1);else{if(picks.length===3)picks.shift();picks.push(x)}
@@ -88,7 +88,7 @@ macs.forEach(x=>{const b=document.createElement('button');b.className='mac';b.se
   };macBox.appendChild(b)});
 
 /* ---------- SAUCES (real list from their wings description) ---------- */
-const wing=M.find(x=>x.n==='Wings Bone-in');
+const wing=M.find(x=>x.n==='Wings, Bone-In');
 const sauces=wing?wing.d.split(':')[1].split('.')[0].replace(/ or /,', ').split(',').map(s=>s.trim()).filter(Boolean):[];
 const sBox=$('[data-sauces]'),pick=$('[data-sauce-pick] b');
 sauces.forEach(s=>{const b=document.createElement('button');b.className='sauce';b.textContent=s;b.setAttribute('aria-pressed','false');b.onclick=()=>{$$('.sauce').forEach(x=>x.setAttribute('aria-pressed',x===b));pick.textContent=s};sBox.appendChild(b)});
