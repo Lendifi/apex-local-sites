@@ -67,3 +67,19 @@ footer{background:var(--ink);color:#d9e6df}.foot{display:flex;flex-wrap:wrap;jus
 .hipaa{background:#fff6ec;border:1px solid #f0d9c2;border-radius:12px;padding:10px 14px;font-size:14px;margin-top:12px}
 .brand .dot{color:var(--sun)}
 .wave{background:linear-gradient(120deg,#16324a,#2a6f8f);color:#fff}.wave .sub{color:#d6e6ee}
+
+.hrt{background:linear-gradient(180deg,#f7f2ec,#fbfaf6)}
+.hgrid{display:grid;gap:16px;margin-top:20px}@media(min-width:860px){.hgrid{grid-template-columns:1fr 1fr}}
+.hcard{background:#fff;border-radius:var(--r);padding:22px;border:1px solid #ece4da;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.hcard h3{margin:.4em 0}.lbl{font-weight:700;font-size:14px;margin:14px 0 6px;color:var(--ink)}
+.sym{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}.sym li{background:#f3eee7;border-radius:999px;padding:5px 11px;font-size:14px}
+.more{display:inline-block;margin-top:14px;font-weight:700;color:var(--g)}
+.tag.blue,.ptag.blue{background:#e3eef8;color:#1d4f7a}.tag.pink,.ptag.pink{background:#fbe6ee;color:#8a2d55}
+.hband{display:grid;gap:12px;margin:18px 0}@media(min-width:860px){.hband{grid-template-columns:1fr 1fr}}
+.hband div{background:var(--ink);color:#fff;border-radius:var(--r);padding:20px}.hband b{display:block;font:600 21px Fraunces,serif;margin-bottom:6px}.hband span{font-size:14px;opacity:.8}
+.group{display:grid;gap:14px;align-items:center;background:#fff;border:2px dashed #e0c9b4;border-radius:var(--r);padding:22px;margin-bottom:12px}@media(min-width:860px){.group{grid-template-columns:1fr auto}}.group h3{margin:.2em 0}
+.feed{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin:18px 0}
+.post{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #e6e9ec;border-radius:var(--r);padding:18px;color:var(--ink);text-decoration:none;transition:.2s}.post:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.post p{margin:0;color:var(--mut);font-size:15px}.post i{margin-top:auto;font-style:normal;font-weight:700;color:var(--g);font-size:14px}
+.ptag{align-self:flex-start;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:#e6f4ea;color:#137333;text-transform:uppercase;letter-spacing:.05em}.ptag.gold{background:#fff3d6;color:#7a5200}
+.faq{display:grid;gap:10px}.faq details{background:#fff;border:1px solid #e6e9ec;border-radius:12px;padding:14px 18px}.faq summary{font-weight:700;cursor:pointer;font-size:17px}.faq p{margin:10px 0 0;color:var(--mut)}
