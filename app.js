@@ -4,18 +4,30 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const svg=id=>`<svg><use href="#${id}"/></svg>`;
-$("#yr").textContent=new Date().getFullYear();
+let resetChat=()=>{},playCall=()=>{},renderBook=()=>{};
+const yr=$("#yr");if(yr)yr.textContent=new Date().getFullYear();
 
-/* nav, progress, cursor glow */
-addEventListener("scroll",()=>{const h=document.documentElement;$("#nav").classList.toggle("s",scrollY>30);$("#prog").style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+"%";tlFill();},{passive:true});
-const cur=$("#cur");addEventListener("pointermove",e=>{cur.style.left=e.clientX+"px";cur.style.top=e.clientY+"px"},{passive:true});
+/* old hash URLs from the single-page site */
+const HASH={problems:"/problems/",demos:"/demos/",calc:"/calculator/",pricing:"/pricing/",how:"/how-it-works/",industries:"/industries/",work:"/work/",faq:"/faq/",contact:"/contact/",top:"/"};
+if(location.pathname==="/"||location.pathname==="/index.html"){const k=location.hash.replace(/^#/,"");if(HASH[k])location.replace(HASH[k])}
+
+/* nav, progress, cursor glow, mobile menu */
+const isHome=document.body.classList.contains("home");
+addEventListener("scroll",()=>{const h=document.documentElement;const nav=$("#nav");if(nav&&isHome)nav.classList.toggle("s",scrollY>30);const prog=$("#prog");if(prog)prog.style.width=(scrollY/(Math.max(1,h.scrollHeight-innerHeight))*100)+"%";tlFill();},{passive:true});
+const cur=$("#cur");if(cur)addEventListener("pointermove",e=>{cur.style.left=e.clientX+"px";cur.style.top=e.clientY+"px"},{passive:true});
+const menuBtn=$("#menuBtn"),navLinks=$("#navlinks");
+if(menuBtn&&navLinks){const closeMenu=()=>{navLinks.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");menuBtn.setAttribute("aria-label","Open menu");document.body.classList.remove("nav-open")};
+menuBtn.addEventListener("click",()=>{const on=navLinks.classList.toggle("open");menuBtn.setAttribute("aria-expanded",on?"true":"false");menuBtn.setAttribute("aria-label",on?"Close menu":"Open menu");document.body.classList.toggle("nav-open",on)});
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
+addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()})}
 
 /* hero rotating word */
-const words=["book jobs","answer calls","text back","get reviews","win Google"];let wi=0;
-setInterval(()=>{const r=$("#rot");r.animate([{opacity:1,transform:"none"},{opacity:0,transform:"translateY(-20px)"}],{duration:250}).onfinish=()=>{wi=(wi+1)%words.length;r.textContent=words[wi];r.animate([{opacity:0,transform:"translateY(20px)"},{opacity:1,transform:"none"}],{duration:300})}},2600);
+const rot=$("#rot");
+if(rot){const words=["book jobs","answer calls","text back","get reviews","win Google"];let wi=0;
+setInterval(()=>{const r=rot;r.animate([{opacity:1,transform:"none"},{opacity:0,transform:"translateY(-20px)"}],{duration:250}).onfinish=()=>{wi=(wi+1)%words.length;r.textContent=words[wi];r.animate([{opacity:0,transform:"translateY(20px)"},{opacity:1,transform:"none"}],{duration:300})}},2600)}
 
 /* hero canvas: mountain mesh */
-(function(){const c=$("#mesh"),x=c.getContext("2d");let w,h,t=0,pts=[];
+(function(){const c=$("#mesh");if(!c)return;const x=c.getContext("2d");let w,h,t=0,pts=[];
 function rs(){w=c.width=c.offsetWidth*devicePixelRatio;h=c.height=c.offsetHeight*devicePixelRatio;pts=[];for(let i=0;i<70;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
 rs();addEventListener("resize",rs);
 function fr(){t+=.006;x.clearRect(0,0,w,h);
@@ -25,11 +37,13 @@ function fr(){t+=.006;x.clearRect(0,0,w,h);
  requestAnimationFrame(fr)}fr()})();
 
 /* marquee */
-const mq=["Websites","AI chat","AI receptionist","Online booking","Missed-call text-back","Google Business Profile care","Local SEO","Lead reports","Review requests"];
-$("#mq").innerHTML=[...mq,...mq].map(m=>`<span>${m}</span><span>&#9650;</span>`).join("");
+const mqEl=$("#mq");
+if(mqEl){const mq=["Websites","AI chat","AI receptionist","Online booking","Missed-call text-back","Google Business Profile care","Local SEO","Lead reports","Review requests"];
+mqEl.innerHTML=[...mq,...mq].map(m=>`<span>${m}</span><span>&#9650;</span>`).join("")}
 
 /* problems */
-const P=[["i-miss","Missed calls","You're on a job and can't pick up. Most callers won't leave a voicemail. They call the next company.","An AI receptionist answers every call 24/7, books the job or takes a message, and texts you a summary. Or start simpler with missed-call text-back."],
+const pgrid=$("#pgrid");
+if(pgrid){const P=[["i-miss","Missed calls","You're on a job and can't pick up. Most callers won't leave a voicemail. They call the next company.","An AI receptionist answers every call 24/7, books the job or takes a message, and texts you a summary. Or start simpler with missed-call text-back."],
 ["i-form","Forms that go nowhere","The contact form sends to an inbox nobody checks, or it quietly broke months ago.","Every form goes to your phone as a text and an email, gets logged in a lead sheet, and we test it at launch and every month."],
 ["i-cal","No online booking","Customers can only reach you by phone during business hours. At 10 PM they give up.","A Book Now button connected to your Google Calendar, Calendly, Jobber, or Housecall Pro so they can grab a time any hour."],
 ["i-clock","Slow replies","The first business to respond usually gets the job. Hours-later replies lose.","AI chat on your site answers right away and gathers the job details, and every form gets an auto-reply within a minute."],
@@ -37,12 +51,13 @@ const P=[["i-miss","Missed calls","You're on a job and can't pick up. Most calle
 ["i-star","No reviews or follow-up","Happy customers forget to leave reviews, and open quotes never get a follow-up.","An automatic \"how'd we do?\" link after each job, and reminders on open quotes after 2 and 5 days."],
 ["i-mob","Bad on mobile","Slow pages, tiny text, and phone numbers you can't tap.","A fast, mobile-first site with tap-to-call, reviews up top, clear services and cities, and a short form."],
 ["i-chart","No tracking","You don't know which ads or pages actually bring in work.","Call and form tracking plus a one-page monthly report: calls, forms, bookings, and where they came from."]];
-$("#pgrid").innerHTML=P.map((p,i)=>`<div class="pc rv" style="transition-delay:${i%4*80}ms" tabindex="0"><div class="in2"><div class="fa"><div class="ic">${svg(p[0])}</div><span class="tg">Problem</span><h3>${p[1]}</h3><p>${p[2]}</p></div><div class="ba"><div class="ic">${svg("i-check")}</div><span class="tg">How we fix it</span><h3>${p[1]}</h3><p>${p[3]}</p></div></div></div>`).join("")+"";
-$("#pgrid").insertAdjacentHTML("afterend",'<p class="hint">Tip: tap a card to flip it.</p>');
-$$(".pc").forEach(c=>c.addEventListener("click",()=>c.classList.toggle("f")));
+pgrid.innerHTML=P.map((p,i)=>`<div class="pc rv" style="transition-delay:${i%4*80}ms" tabindex="0"><div class="in2"><div class="fa"><div class="ic">${svg(p[0])}</div><span class="tg">Problem</span><h3>${p[1]}</h3><p>${p[2]}</p></div><div class="ba"><div class="ic">${svg("i-check")}</div><span class="tg">How we fix it</span><h3>${p[1]}</h3><p>${p[3]}</p></div></div></div>`).join("")+"";
+pgrid.insertAdjacentHTML("afterend",'<p class="hint">Tip: tap a card to flip it.</p>');
+$$(".pc").forEach(c=>c.addEventListener("click",()=>c.classList.toggle("f")));}
 
 /* ===== 1 chat demo ===== */
 const chatbd=$("#chatbd"),chips=$("#chatchips");let chatRun=0;
+if(chatbd&&chips){
 function addMsg(t,who,cls=""){const d=document.createElement("div");d.className="msg "+who+" "+cls;d.innerHTML=t;chatbd.appendChild(d);chatbd.scrollTop=chatbd.scrollHeight}
 async function bot(t,cls,id){const ty=document.createElement("div");ty.className="typing";ty.innerHTML="<i></i><i></i><i></i>";chatbd.appendChild(ty);chatbd.scrollTop=chatbd.scrollHeight;await sleep(700+Math.min(t.length*8,900));ty.remove();if(id!==chatRun)return;addMsg(t,"b",cls)}
 function setChips(opts,cb){chips.innerHTML="";opts.forEach(o=>{const b=document.createElement("button");b.textContent=o;b.onclick=()=>{chips.innerHTML="";addMsg(esc(o),"u");cb(o)};chips.appendChild(b)})}
@@ -80,10 +95,13 @@ async function chatStep(k,ans){const id=chatRun;if(k==="cityfree"){cityInput();r
  else await bot(FLOW[k].t,"",id);if(id!==chatRun)return;
  if(k==="name"){contactForm();return}
  setChips(Object.keys(FLOW[k].o),o=>{const nx=FLOW[k].o[o];if(nx==="start"){resetChat();return}chatStep(nx,o)})}
-function resetChat(){chatRun++;chatbd.innerHTML="";chips.innerHTML="";chatCtx={};chatStep("start")}
+resetChat=function(){chatRun++;chatbd.innerHTML="";chips.innerHTML="";chatCtx={};chatStep("start")}
+
+}
 
 /* ===== 2 call demo ===== */
-const wave=$("#wave");for(let i=0;i<22;i++)wave.appendChild(document.createElement("i"));
+const wave=$("#wave");
+if(wave){for(let i=0;i<22;i++)wave.appendChild(document.createElement("i"));
 let callRun=0,waveT=null,timerT=null;
 const CALL=[["ai","Thanks for calling Example Plumbing Co. This is Example Plumbing's AI assistant. I can help you schedule or answer questions. How can I help?"],
 ["c","Hi, my kitchen sink is backing up and it smells pretty bad."],["ai","Sorry about that. I can get a plumber out. Can I get your name?"],
@@ -96,7 +114,7 @@ const CALL=[["ai","Thanks for calling Example Plumbing Co. This is Example Plumb
 ["ai","You're booked for tomorrow at 9 AM at 123 Example Street. You'll get a text and an email confirmation, and the tech will text when he's on the way. Anything else?"],["c","Nope, that's it. Thanks!"],["ai","Thanks Jordan, have a good night."]];
 function waveOn(on){clearInterval(waveT);$$("#wave i").forEach(i=>i.style.height="6px");if(on)waveT=setInterval(()=>$$("#wave i").forEach(i=>i.style.height=(6+Math.random()*28)+"px"),120)}
 function resetCall(){callRun++;waveOn(false);clearInterval(timerT);$("#ring").classList.remove("on");$("#ctimer").textContent="00:00";$("#cstat").textContent="Waiting";$("#tscript").innerHTML='<p style="color:var(--mut)">Press "Play the call" to hear how a call goes. The transcript shows up here line by line.</p>';$$("#capt div").forEach(d=>{d.classList.remove("got");$("b",d).textContent=""});$("#osms").classList.remove("show")}
-async function playCall(){resetCall();const id=callRun,ts=$("#tscript");ts.innerHTML="";$("#ring").classList.add("on");$("#cstat").textContent="Ringing...";await sleep(1200);if(id!==callRun)return;
+playCall=async function(){resetCall();const id=callRun,ts=$("#tscript");ts.innerHTML="";$("#ring").classList.add("on");$("#cstat").textContent="Ringing...";await sleep(1200);if(id!==callRun)return;
  $("#ring").classList.remove("on");$("#cstat").textContent="Connected \u00b7 AI answering";let s=0;timerT=setInterval(()=>{s++;$("#ctimer").textContent=String(s/60|0).padStart(2,"0")+":"+String(s%60).padStart(2,"0")},1000);
  for(const [w,t,cap] of CALL){if(id!==callRun)return;waveOn(true);const p=document.createElement("p");p.innerHTML=`<b class="${w==="c"?"c":""}">${w==="ai"?"AI assistant":"Caller"}:</b> `;ts.appendChild(p);
   for(const word of t.split(" ")){if(id!==callRun)return;p.append(word+" ");ts.scrollTop=ts.scrollHeight;await sleep(55)}
@@ -104,15 +122,15 @@ async function playCall(){resetCall();const id=callRun,ts=$("#tscript");ts.inner
   waveOn(false);await sleep(350)}
  clearInterval(timerT);$("#cstat").textContent="Call ended \u00b7 booked";
  $("#osmsb").innerHTML="New booking: Tomorrow 9:00 AM, kitchen sink backup (not flooding). Name: Jordan M. Address: 123 Example St, Lehi. Email: jordan@example.com. Phone: (555) 010-0177. Calendar event created. Full transcript in your dashboard.";$("#osms").classList.add("show")}
-$("#callgo").onclick=playCall;
+if($("#callgo"))$("#callgo").onclick=playCall;}
 
 /* ===== 3 booking ===== */
-const SV=[["Drain cleaning","1 hr"],["Water heater service","2 hr"],["Leak repair","1 hr"],["Free estimate","30 min"]];
+if($("#svc")){const SV=[["Drain cleaning","1 hr"],["Water heater service","2 hr"],["Leak repair","1 hr"],["Free estimate","30 min"]];
 let bk={};const today=new Date();
 const workdays=[];{let d=new Date(today);while(workdays.length<5){d.setDate(d.getDate()+1);if(d.getDay()>0&&d.getDay()<6)workdays.push(new Date(d))}}
 const SLOTS=["8:00 AM","9:00 AM","10:00 AM","1:00 PM","2:00 PM","3:00 PM"],HRS=["8","9","10","11","12","1","2","3","4"];
 const BUSY={0:[0,3],1:[1,2,5],2:[0,4],3:[2,3],4:[1,6]};
-function renderBook(){bk={};const bf=$("#bdet");if(bf){bf.reset();$$("input",bf).forEach(i=>i.classList.remove("bad"));$("#berr").textContent=""}$("#svc").innerHTML=SV.map((s,i)=>`<button data-i="${i}"><span>${s[0]}</span><small>${s[1]}</small></button>`).join("");
+renderBook=function(){bk={};const bf=$("#bdet");if(bf){bf.reset();$$("input",bf).forEach(i=>i.classList.remove("bad"));$("#berr").textContent=""}$("#svc").innerHTML=SV.map((s,i)=>`<button data-i="${i}"><span>${s[0]}</span><small>${s[1]}</small></button>`).join("");
  $$("#svc button").forEach(b=>b.onclick=()=>{$$("#svc button").forEach(x=>x.classList.remove("on"));b.classList.add("on");bk.s=SV[b.dataset.i][0];chk()});
  const m=new Date(today.getFullYear(),today.getMonth(),1);$("#mon").textContent=today.toLocaleString("en-US",{month:"long",year:"numeric"});
  let h="SMTWTFS".split("").map(c=>`<div class="h">${c}</div>`).join("");for(let i=0;i<m.getDay();i++)h+="<div></div>";
@@ -136,6 +154,8 @@ $("#bconf").onclick=()=>{const f=$("#bdet"),v={};["name","addr","email","phone"]
  renderWeek({c:bk.w,r:slotRow(bk.t),s:bk.s+": "+v.name});const t=$("#btoast");t.style.display="block";
  t.innerHTML=`<b>&#10003; Booked:</b> ${esc(bk.s)}, ${ds} at ${bk.t}.<div class="evd"><b>Calendar event: ${esc(bk.s)}: ${esc(v.name)}</b><span>Address: ${esc(v.addr)}</span><span>Phone: ${esc(v.phone)}</span><span>Email: ${esc(v.email)}</span></div><small>Simulated: confirmation to ${esc(v.email)} and ${esc(v.phone)}, reminder 24 hours before. Nothing is saved or sent.</small>`;$("#bconf").disabled=true};
 
+}
+
 /* ===== 4 missed call ===== */
 let missRun=0;
 async function playMiss(){const id=++missRun,sc=$("#mscr");$$(".bub",sc).forEach(b=>b.remove());$("#mcard").classList.remove("show");const st=$$("#msteps div");st.forEach(s=>s.classList.remove("on"));
@@ -152,8 +172,10 @@ async function playMiss(){const id=++missRun,sc=$("#mscr");$$(".bub",sc).forEach
 function slider(wrap,handle,clipEl){let on=false;const set=x=>{const r=wrap.getBoundingClientRect();let p=Math.max(2,Math.min(98,(x-r.left)/r.width*100));handle.style.left=p+"%";clipEl.style.clipPath=`inset(0 0 0 ${p}%)`};
  wrap.addEventListener("pointerdown",e=>{on=true;wrap.setPointerCapture(e.pointerId);set(e.clientX)});wrap.addEventListener("pointermove",e=>on&&set(e.clientX));wrap.addEventListener("pointerup",()=>on=false);
  return p=>{const r=wrap.getBoundingClientRect();set(r.left+r.width*p/100)}}
-const gbpSet=slider($("#gbpba"),$("#gbph"),$("#gbpba .after")),siteSet=slider($("#sitecmp"),$("#siteh"),$("#sitecmp .new"));
-function sweep(fn){let t=0;const iv=setInterval(()=>{t+=1;fn(50+Math.sin(t/12)*38);if(t>75){clearInterval(iv);fn(50)}},30)}
+let gbpSet,siteSet;
+if($("#gbpba")&&$("#gbph")&&$("#gbpba .after"))gbpSet=slider($("#gbpba"),$("#gbph"),$("#gbpba .after"));
+if($("#sitecmp")&&$("#siteh")&&$("#sitecmp .new"))siteSet=slider($("#sitecmp"),$("#siteh"),$("#sitecmp .new"));
+function sweep(fn){if(!fn)return;let t=0;const iv=setInterval(()=>{t+=1;fn(50+Math.sin(t/12)*38);if(t>75){clearInterval(iv);fn(50)}},30)}
 
 /* ===== 6 dashboard ===== */
 const WK=[[14,5,2],[17,6,3],[15,4,4],[18,8,3]];
@@ -170,7 +192,7 @@ const AUD={B:[["Mobile speed",38],["Mobile friendly",45],["SEO basics",52],["Tap
 function audit(k){$("#aA").classList.toggle("on",k==="A");$("#aB").classList.toggle("on",k==="B");const C=2*Math.PI*30;
  $("#audit").innerHTML=AUD[k].map(([l,v])=>{const n=typeof v==="number"?v:(v==="Yes"?100:0);const col=n>=90?"#c6ff3d":n>=50?"#ffb020":"#ff4fa3";return `<div class="gauge"><svg viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#22304d"/><circle cx="35" cy="35" r="30" stroke="${col}" stroke-dasharray="0 ${C}" data-d="${n/100*C}" style="transition:stroke-dasharray 1s"/></svg><div class="v" style="color:${col}">${v}</div>${l}</div>`}).join("")+'<div style="grid-column:1/-1;font-size:.7rem;color:var(--mut)">Example scores for illustration. We run a real audit on your site before we quote.</div>';
  setTimeout(()=>$$("#audit circle[data-d]").forEach(c=>c.setAttribute("stroke-dasharray",`${c.dataset.d} ${C}`)),50)}
-$("#aA").onclick=()=>audit("A");$("#aB").onclick=()=>audit("B");
+if($("#aA")&&$("#aB")&&$("#audit")){$("#aA").onclick=()=>audit("A");$("#aB").onclick=()=>audit("B")}
 
 /* replay buttons */
 $$(".replay").forEach(b=>b.onclick=()=>({chat:resetChat,call:playCall,book:renderBook,miss:playMiss})[b.dataset.r]());
@@ -180,41 +202,41 @@ const money=n=>"$"+Math.round(n).toLocaleString("en-US");
 function calc(){const c=+$("#rC").value,m=+$("#rM").value,j=+$("#rJ").value,b=+$("#rB").value;$("#vC").textContent=c;$("#vM").textContent=m+"%";$("#vJ").textContent=money(j);$("#vB").textContent=b+"%";
  const mo=c*(m/100)*(b/100)*j*4.33,missed=c*m/100*4.33;$("#lost").textContent=money(mo);$("#lostY").textContent=`About ${money(mo*12)} a year, from roughly ${Math.round(missed)} missed calls a month`;
  const jobs=Math.max(1,Math.ceil(500/j));$("#vs").innerHTML=mo>0?`For comparison, the AI Receptionist add-on is $300/mo. At ${money(j)} a job, saving about ${jobs} job${jobs>1?"s":""} a month would cover it.`:"Nice, you're catching every call."}
-$$("#calc input").forEach(i=>i.addEventListener("input",calc));calc();
+if($("#rC")){$$("#calc input").forEach(i=>i.addEventListener("input",calc));calc()}
 
 /* ===== pricing from build.py data ===== */
 const D=window.D;
-$("#pk").innerHTML=D.P.map((p,i)=>`<div class="pcard rv ${p.k==="Local"?"rec":""}" style="transition-delay:${i*90}ms">${p.k==="Local"?'<span class="rb">MOST POPULAR PICK</span>':""}<h3>${p.k==="Growth"?"Growth (SEO)":p.k}</h3><p class="tag">${esc(p.tag)}</p><div class="price">${p.up}<small> upfront</small></div><div class="mo">+ ${p.mo}/month</div>${p.base?`<div class="bf">Everything in ${p.base}, plus:</div>`:""}<ul>${p.items.map(it=>`<li>${esc(it[0])}<div class="tip">${esc(it[1])}</div></li>`).join("")}</ul>${p.note?`<p class="best">${esc(p.note)}</p>`:""}<p class="best">Best for: ${esc(p.best)}</p><a class="btn btn-g" style="margin-top:14px;justify-content:center" href="#contact">Ask about ${p.k}</a></div>`).join("");
+if($("#pk")&&D){$("#pk").innerHTML=D.P.map((p,i)=>`<div class="pcard rv ${p.k==="Local"?"rec":""}" style="transition-delay:${i*90}ms">${p.k==="Local"?'<span class="rb">MOST POPULAR PICK</span>':""}<h3>${p.k==="Growth"?"Growth (SEO)":p.k}</h3><p class="tag">${esc(p.tag)}</p><div class="price">${p.up}<small> upfront</small></div><div class="mo">+ ${p.mo}/month</div>${p.base?`<div class="bf">Everything in ${p.base}, plus:</div>`:""}<ul>${p.items.map(it=>`<li>${esc(it[0])}<div class="tip">${esc(it[1])}</div></li>`).join("")}</ul>${p.note?`<p class="best">${esc(p.note)}</p>`:""}<p class="best">Best for: ${esc(p.best)}</p><a class="btn btn-g" style="margin-top:14px;justify-content:center" href="/contact/">Ask about ${p.k}</a></div>`).join("");
 $$(".pcard li").forEach(l=>l.onclick=()=>l.classList.toggle("op"));
 $("#cmp").innerHTML=`<tr><th>What's included</th>${["Starter","Local","Leads","Growth"].map((n,i)=>`<th class="${i===1?"rc":""}">${n}</th>`).join("")}</tr>`+D.C.map(([l,v])=>`<tr><td>${esc(l)}</td>${v.map((x,i)=>`<td class="${i===1?"rc":""}">${x==="Y"?'<span class="y">&#10003;</span>':x?esc(x):'<span style="color:#33456b">-</span>'}</td>`).join("")}</tr>`).join("");
 const AD=[["AI Receptionist","$1,000","$300","Answers your phone 24/7 in your business name and tells callers it's an AI assistant. Books appointments, captures details, sends urgent calls to you, and texts you a summary. Includes 300 phone minutes a month (roughly 100 calls) and website chat. Extra minutes are $0.35 each, and we'll tell you before you get close."],
 ["Missed-Call Text-Back","$250","$99","When a call goes unanswered, the caller gets a friendly text within about a minute, and their reply comes straight to you. Only texts people who just called. Already included in Leads and Growth."],
 ["GBP Cleanup &amp; Care","$300","$199","One-time Google Business Profile cleanup (categories, services, hours, areas, description, photos), then weekly posts, new photos, replies to every review, and a short monthly report. Already included in Local and up."]];
 $("#addons").innerHTML=AD.map(a=>`<div class="ad rv"><span class="kick" style="margin:0">Add-on</span><h3 style="margin:8px 0">${a[0]}</h3><div class="price">${a[1]}<small> setup</small> + ${a[2]}<small>/mo</small></div><p>${a[3]}</p></div>`).join("");
-$("#terms").innerHTML=D.T.map(t=>{const i=t.indexOf(".");return `<div><b>${esc(t.slice(0,i+1))}</b>${esc(t.slice(i+1))}</div>`}).join("");
+$("#terms").innerHTML=D.T.map(t=>{const i=t.indexOf(".");return `<div><b>${esc(t.slice(0,i+1))}</b>${esc(t.slice(i+1))}</div>`}).join("");}
 
 /* timeline */
-const TL=[["Day 1","Free look at your business","Call or fill out the form. Sam reviews your current website and Google profile and tells you what's costing you leads."],
+if($("#tl")){const TL=[["Day 1","Free look at your business","Call or fill out the form. Sam reviews your current website and Google profile and tells you what's costing you leads."],
 ["Day 2 to 3","Free mockup","You see a preview of your new site with your real name, services, and reviews. No commitment."],
 ["Day 3","Pick a package and get set up","Choose a package, pay the upfront fee, and share access to your domain and Google profile. Your domain stays in your name."],
 ["Day 3 to 7","We build it","Site, forms, tap-to-call, and any add-ons you picked (AI receptionist, text-back, booking). You approve the greeting and the answers the AI may give."],
 ["About day 8","Launch and test","We go live within about 5 business days of getting your info and access, then test every form, call path, and booking."],
 ["Every month","Keep it working","Edits, Google profile upkeep, and a plain-English report on calls, forms, and bookings."]];
-$("#tl").insertAdjacentHTML("beforeend",TL.map((s,i)=>`<div class="tst rv" data-n="${i+1}"><div class="when">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join(""));
+$("#tl").insertAdjacentHTML("beforeend",TL.map((s,i)=>`<div class="tst rv" data-n="${i+1}"><div class="when">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join(""));}
 function tlFill(){const t=$("#tl");if(!t)return;const r=t.getBoundingClientRect();const p=Math.max(0,Math.min(1,(innerHeight*.7-r.top)/r.height));$("#tlf").style.height=p*100+"%"}
 
 /* industries */
-const IN=[["Contractors","i-wrench","Roofers, plumbers, HVAC, painters, landscapers, fencing","You're on a roof or under a house when the phone rings. Every missed call can be a job worth hundreds or thousands.",[["AI receptionist","answers while you work"],["Missed-call text-back","saves callers before they move on"],["City pages","show up in every town you serve"],["Review requests","after each job, automatically"]]],
+if($("#tabs")&&$("#ipanels")){const IN=[["Contractors","i-wrench","Roofers, plumbers, HVAC, painters, landscapers, fencing","You're on a roof or under a house when the phone rings. Every missed call can be a job worth hundreds or thousands.",[["AI receptionist","answers while you work"],["Missed-call text-back","saves callers before they move on"],["City pages","show up in every town you serve"],["Review requests","after each job, automatically"]]],
 ["Med spas","i-spark","Med spas, aesthetics, chiropractors, wellness","Your business runs on bookings and repeat visits. Clients want to book at night, from their phone, without calling.",[["Online booking","into your existing calendar"],["AI chat","answers treatment and pricing questions you approve"],["Reminders","to cut no-shows"],["GBP care","photos, posts, and review replies"]]],
 ["Auto repair","i-car","Auto repair, detailing, tire shops","Customers want to know if you can fit them in today and roughly what it costs.",[["AI receptionist","handles \"can you look at it today?\" calls"],["Booking","for drop-off slots"],["Quote follow-up","reminders after 2 and 5 days"],["Reviews","asked for after every pickup"]]],
 ["Restaurants","i-food","Restaurants, bars, cafes, catering","Your phone rings all day with \"are you open?\" and \"do you take reservations?\" while the kitchen is slammed.",[["AI phone help","hours, menu, and reservation questions"],["Menu that's always current","on your site and Google"],["Catering inquiry form","straight to your phone"],["Online ordering links","with fewer delivery app fees where possible"]]],
 ["Retail","i-bag","Boutiques, specialty shops, local stores","Shoppers check Google before they drive over. Old photos and wrong hours send them somewhere else.",[["GBP care","fresh product photos and correct hours"],["Product photo touch-ups","better lighting and cleanup, never misleading"],["Simple pickup ordering","for top products"],["AI chat","\"do you have this in stock?\" questions"]]]];
 $("#tabs").innerHTML=IN.map((x,i)=>`<button class="${i?"":"on"}" data-i="${i}">${svg(x[1])}${x[0]}</button>`).join("");
-$("#ipanels").innerHTML=IN.map((x,i)=>`<div class="ipanel ${i?"":"on"}"><div><span class="kick">${x[2]}</span><h3>${x[0]}</h3><p style="margin-top:10px">${x[3]}</p><a class="btn btn-p" style="margin-top:18px" href="#contact">Get a free mockup</a></div><ul>${x[4].map(l=>`<li><b>${l[0]}</b>: ${l[1]}</li>`).join("")}</ul></div>`).join("");
-$$("#tabs button").forEach(b=>b.onclick=()=>{$$("#tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");$$(".ipanel").forEach((p,i)=>p.classList.toggle("on",i==b.dataset.i))});
+$("#ipanels").innerHTML=IN.map((x,i)=>`<div class="ipanel ${i?"":"on"}"><div><span class="kick">${x[2]}</span><h3>${x[0]}</h3><p style="margin-top:10px">${x[3]}</p><a class="btn btn-p" style="margin-top:18px" href="/contact/">Get a free mockup</a></div><ul>${x[4].map(l=>`<li><b>${l[0]}</b>: ${l[1]}</li>`).join("")}</ul></div>`).join("");
+$$("#tabs button").forEach(b=>b.onclick=()=>{$$("#tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");$$(".ipanel").forEach((p,i)=>p.classList.toggle("on",i==b.dataset.i))});}
 
 /* faq */
-const FQ=[["How fast can my site go live?","Within about 5 business days once we have your business info and access to your domain."],
+if($("#faqs")){const FQ=[["How fast can my site go live?","Within about 5 business days once we have your business info and access to your domain."],
 ["Do I own my domain?","Yes. It's registered in your name and stays yours."],
 ["Is there a contract?","Every package has a 12-month minimum. Monthly billing starts when your site goes live."],
 ["Will the AI pretend to be a person?","No. It tells callers and chatters that it's an AI assistant. It only gives answers and prices you've approved, and it hands urgent calls to you."],
@@ -223,14 +245,14 @@ const FQ=[["How fast can my site go live?","Within about 5 business days once we
 ["What counts as an edit?","Small updates like text, photos, hours, prices, or adding a service. Every package includes up to 30 minutes a month. Bigger projects are $75 an hour, and we always quote first."],
 ["Do I need a new phone number?","Not necessarily. We can forward your current number to the AI receptionist only when you don't answer, or set up a new tracked number."],
 ["Will text-back spam my customers?","No. It only texts people who just called you, includes a STOP opt-out, and is registered with the carriers as required."],
-["Are the demos on this page real?","They're simulations that run in your browser with a made-up business and example data, so you can see how each piece works."]];
-$("#faqs").innerHTML=FQ.map(f=>`<details class="rv"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
+["Are the live demos real?","They're simulations that run in your browser with a made-up business and example data, so you can see how each piece works. Try them on the Live demos page."]];
+$("#faqs").innerHTML=FQ.map(f=>`<details class="rv"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");}
 
 /* lead form -> Supabase edge function */
 const FN="https://cevwtjemggmnqprazabj.supabase.co/functions/v1/apex-lead-submit";
 const ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNldnd0amVtZ2dtbnFwcmF6YWJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEzMzk5NzEsImV4cCI6MjEwNjkxNTk3MX0.EJuoAEn2eAEm_sdilk_pvR69qHWkVrOvv55SclOr4VE";
 const F=$("#cform");
-F.addEventListener("submit",async e=>{e.preventDefault();const err=$("#ferr");err.style.display="none";$$(".bad",F).forEach(x=>x.classList.remove("bad"));
+if(F)F.addEventListener("submit",async e=>{e.preventDefault();const err=$("#ferr");err.style.display="none";$$(".bad",F).forEach(x=>x.classList.remove("bad"));
  const v=n=>F.elements[n].value.trim();const bad=[];if(!v("name"))bad.push("name");if(!v("business_name"))bad.push("business_name");const dg=v("phone").replace(/\D/g,"");if(dg.length<10||dg.length>11)bad.push("phone");if(v("email")&&!/^\S+@\S+\.\S+$/.test(v("email")))bad.push("email");
  bad.forEach(n=>F.elements[n].classList.add("bad"));const cons=$("#consent").checked;
  if(bad.length||!cons){err.style.display="block";err.textContent=bad.length?"Please check the highlighted fields.":"Please check the consent box so Sam can call you.";return}
@@ -244,6 +266,6 @@ F.addEventListener("submit",async e=>{e.preventDefault();const err=$("#ferr");er
 const started=new Set();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add("in");const id=e.target.id;if(id&&!started.has(id)){started.add(id);({"d-chat":resetChat,"d-miss":playMiss,"d-dash":playDash,"d-gbp":()=>sweep(gbpSet),"d-site":()=>{sweep(siteSet);audit("A")}})[id]?.()}}),{threshold:.2});
 $$(".rv,.demo").forEach(el=>io.observe(el));
-renderBook();
+if($("#svc"))renderBook();
 window.__demo={playCall,playMiss,resetChat,playDash};
 })();
