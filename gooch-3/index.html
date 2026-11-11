@@ -461,13 +461,12 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:3px;bac
         <div><span>Body sits higher by</span><b id="rBody">5.0 in</b></div>
         <div><span>Axle clearance gain</span><b id="rAxle">2.0 in</b></div>
         <div><span>Wheel-well room vs stock</span><b id="rWell">+1.0 in</b></div>
-        <div><span>Speedometer shows 60, you do</span><b id="rSpeed">67.7 mph</b></div>
       </div>
       <p class="plan-say" id="planSay"></p>
       <button class="btn" type="button" id="planSend">Send these numbers to my estimate</button>
     </div>
   </div>
-  <p class="fine">Illustrative only, not a quote or a fitment guarantee. It assumes the kit lifts the body by its rated inches, the tire grows evenly up and down, and the speedometer was set for the stock tire. Real fit depends on the vehicle, wheel offset and trimming, so Gooch checks it on the truck. No prices are shown because none were invented.</p>
+  <p class="fine">Illustrative only, not a quote or a fitment guarantee. It assumes the kit lifts the body by its rated inches, the tire grows evenly up and down. Real fit depends on the vehicle, wheel offset and trimming, so Gooch checks it on the truck. No prices are shown because none were invented.</p>
 </section>
 
 <!-- ================= PROCESS ================= -->
@@ -759,14 +758,13 @@ const PPI=R/17.5;
 function planUpdate(){
   const st=+$("#pStock").value,nw=+$("#pNew").value,lf=+$("#pLift").value;
   $("#pStockO").textContent=st+" in";$("#pNewO").textContent=nw+" in";$("#pLiftO").textContent=lf.toFixed(1)+" in";
-  const half=(nw-st)/2,body=lf+half,well=lf-half,speed=60*nw/st;
+  const half=(nw-st)/2,body=lf+half,well=lf-half;
   const sign=v=>(v>0?"+":"")+v.toFixed(1)+" in";
   $("#rBody").textContent=body.toFixed(1)+" in";$("#rAxle").textContent=half.toFixed(1)+" in";
   const rw=$("#rWell");rw.textContent=sign(well);rw.classList.toggle("warn",well<0);
-  $("#rSpeed").textContent=speed.toFixed(1)+" mph";
   $("#planSay").textContent=well<0?"The tire grows more than the lift makes room for, so expect rubbing without trimming or more lift. Gooch checks all of it on the truck."
-    :body>=4?"That is a real jump in ride height. It changes the speedometer, the gearing and how the tire clears, so Gooch checks all three on the truck."
-    :"A mild change. Gooch still checks clearance and the speedometer on the truck.";
+    :body>=4?"That is a real jump in ride height. It changes the gearing and how the tire clears, so Gooch checks both on the truck."
+    :"A mild change. Gooch still checks clearance on the truck.";
   if(!plan.truck)return;
   const rS=st/35*R,rN=nw/35*R,base=R-rS;                 /* drawing is built around a 35 in tire */
   plan.truck.set({tire:nw/35,wy:GY-rN,rise:(rN-R)+lf*PPI,x:0,lift:0,beam:0});
