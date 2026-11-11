@@ -145,6 +145,14 @@ button,input,textarea{font:inherit;color:inherit}
 .hero-b{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter) 0 calc(var(--gutter) + var(--indent));opacity:0;pointer-events:none}
 .manifesto{font-size:clamp(1.75rem,5.4vw,4.4rem);font-weight:700;--wdth:88;line-height:1.06;max-width:17em;letter-spacing:-.005em}
 .manifesto .w{opacity:.16}
+.hero-photo{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;background:var(--deep)}
+.hero-photo img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;object-position:50% 45%;will-change:transform;transform:scale(1.14);filter:brightness(1.18) saturate(1.05)}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(23,14,8,.58) 0%,rgba(23,14,8,.34) 55%,rgba(23,14,8,.14) 100%),linear-gradient(to top,rgba(23,14,8,.55),rgba(23,14,8,0) 45%)}
+@media (max-width:700px){.hero-photo::after{background:linear-gradient(to bottom,rgba(23,14,8,.12) 0%,rgba(23,14,8,.55) 38%,rgba(23,14,8,.62) 75%,rgba(23,14,8,.4) 100%)}}
+.hero-b{z-index:2}
+.hero-cap{order:-1;opacity:.75;margin:0 0 .8em}
+.brands{margin-top:clamp(18px,3vh,34px);opacity:.85;max-width:34em}
+.brands b{font-weight:700}
 .hero-b .rule{height:2px;background:var(--line);margin:0 calc(var(--gutter) * -1) clamp(22px,4vh,44px) calc(var(--indent) * -1);transform:scaleX(0);transform-origin:left}
 
 /* ---------- materials rail ---------- */
@@ -267,10 +275,17 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .realph img{width:100%;aspect-ratio:1/1;object-fit:cover}
 .realph figcaption{padding:.15em .4em .2em;background:var(--bone);color:var(--walnut);font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 90;font-size:.58rem;line-height:1.2}
 .ill-note{margin-top:1.1em;opacity:.6;font-size:.7rem}
+.qrow{display:grid;gap:clamp(26px,4vh,44px);margin-top:clamp(30px,5vh,60px);align-items:start}
+@media(min-width:900px){.qrow{grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,90px)}}
+.qrow .quote{margin-top:0}
+.sign{margin:0}
+.sign-frame{overflow:hidden;border-radius:4px;aspect-ratio:4/3;background:var(--deep)}
+.sign-frame img{width:100%;height:116%;object-fit:cover;display:block;will-change:transform;transform:translate3d(0,-8%,0) scale(1.04)}
+.sign figcaption{margin-top:8px;opacity:.75;max-width:34em}
 .quote{margin-top:clamp(30px,5vh,60px);max-width:44em}
 .quote blockquote{font-style:italic;font-size:clamp(1.15rem,2.1vw,1.55rem);line-height:1.38}
 .quote figcaption{margin-top:12px;font-family:var(--display);font-weight:600;font-variation-settings:"wdth" 96;font-size:.82rem;color:var(--oak)}
-.store{margin-top:4px;max-width:360px}.store img{width:100%;aspect-ratio:1170/1130;object-fit:cover;object-position:50% 0;border-radius:4px}.store figcaption{margin-top:6px;opacity:.75}
+.store{margin-top:4px;max-width:520px}.store img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block}.store figcaption{margin-top:6px;opacity:.75}
 .two{display:grid;gap:14px;grid-template-columns:1fr 1fr}
 @media(max-width:560px){.two{grid-template-columns:1fr}}
 .field select{width:100%;padding:.7em .8em;background:#fff;border:2px solid rgba(42,28,18,.25);border-radius:4px;font-family:var(--text);font-size:1.05rem;color:var(--walnut)}
@@ -329,6 +344,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     <canvas id="heroGL" aria-hidden="true"></canvas>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-photo"><img src="img/real/rod-1-1600.jpg" srcset="img/real/rod-1-900.jpg 900w, img/real/rod-1-1600.jpg 1600w" sizes="100vw" width="1600" height="1200" alt="Hakes Flooring showroom, Lehi. Photo from Hakes." decoding="async" fetchpriority="low"></div>
 
     <div class="hero-a">
       <h1 class="d" data-fit="112" data-max="190" data-vh=".145">
@@ -347,7 +363,9 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 
     <div class="hero-b">
       <div class="rule" aria-hidden="true"></div>
+      <p class="hero-cap small">Hakes Flooring showroom, Lehi. Photo from Hakes.</p>
       <p class="manifesto d" data-words>Hakes Flooring is a locally owned showroom and install crew in Lehi. We help you pick the right floor for how you actually live, then lay it as carefully as if the house were ours.</p>
+      <p class="brands small">Brands in our showroom, as seen in the photo: <b>Shaw Floors</b> &middot; <b>Mohawk SmartStrand Silk</b> &middot; <b>Antrim</b></p>
     </div>
   </div>
 </section>
@@ -495,10 +513,16 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
     <li><span>Going out of the way for a customer</span></li>
     <li><span>Giving back around Lehi</span> <span class="verify">confirm theme</span></li>
   </ul>
+  <div class="qrow">
   <figure class="quote">
     <blockquote>&ldquo;This company is amazing. I own a service company that I refer a lot of my own customers to Hakes. All of them tell me that Hakes always takes care of them and is so nice and professional and the quality of their work is the best. Thanks Guys!&rdquo;</blockquote>
     <figcaption>Troy M. &middot; Google review &middot; Mar 2026</figcaption>
   </figure>
+  <figure class="sign" id="signFig">
+    <div class="sign-frame"><img src="img/real/rod-2-1600.jpg" srcset="img/real/rod-2-900.jpg 900w, img/real/rod-2-1600.jpg 1600w" sizes="(min-width:900px) 45vw, 100vw" width="1600" height="1200" alt="Hakes Flooring showroom, Lehi. Photo from Hakes. Hardwood and vinyl plank sample boards under a framed wall sign." loading="lazy" decoding="async"></div>
+    <figcaption class="small">Hakes Flooring showroom, Lehi. Photo from Hakes. The framed sign on our showroom wall reads &ldquo;The bitterness of poor quality remains long after the sweetness of low price is forgotten,&rdquo; credited on the sign to Benjamin Franklin.</figcaption>
+  </figure>
+  </div>
   <p class="fine">These are the themes that come up in public reviews. The quote above is a real public Google review (name shortened), as shown on review directories in Nov 2026. Live Google reviews load here at launch. No other customer quotes were written for this concept.</p>
 </section>
 
@@ -514,7 +538,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
       <div><h3>Hours</h3><p>Mon to Fri 10 AM to 6 PM<br>Sat 10 AM to 2 PM &middot; Sun closed<span class="verify">confirm hours</span></p></div>
       <div><h3>Phone</h3><p><a href="tel:+18016921977">(801) 692-1977</a></p></div>
       <div><h3>Where we work</h3><p>Lehi and the towns around it in northern Utah County: Saratoga Springs, Eagle Mountain, American Fork, Highland and Alpine.<span class="verify">confirm towns</span></p></div>
-      <figure class="store"><img src="img/real/storefront.jpg" alt="Hakes Flooring Company storefront, Suite 105, Lehi" loading="lazy"><figcaption class="small">Suite 105. Real photo from the Hakes Google profile.</figcaption></figure>
+      <figure class="store"><img src="img/real/rod-3-1600.jpg" srcset="img/real/rod-3-900.jpg 900w, img/real/rod-3-1600.jpg 1600w" sizes="(min-width:900px) 40vw, 92vw" width="1600" height="1200" alt="Hakes Flooring Company storefront, Suite 105, Lehi. Photo from Hakes." loading="lazy" decoding="async"><figcaption class="small">Suite 105. Hakes Flooring storefront, Lehi. Photo from Hakes.</figcaption></figure>
     </div>
 
     <form class="form" id="estimate" novalidate>
@@ -831,8 +855,9 @@ const secIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.t
 $$(".sec,.pin:not(.hero)").forEach(el=>secIO.observe(el));
 
 /* ============ hero ============ */
+const signFrame=$(".sign-frame"),signImg=$(".sign-frame img");
 const hero={pin:pinOf("top"),gl:null,vis:true,dirty:true,intro:0,
-  a:$(".hero-a"),h1:$(".hero h1"),shade:$(".hero-shade"),b:$(".hero-b"),rule:$(".hero-b .rule"),hint:$(".hint"),lastW:-1,lastWd:-1};
+  a:$(".hero-a"),h1:$(".hero h1"),shade:$(".hero-shade"),b:$(".hero-b"),photo:$(".hero-photo"),photoImg:$(".hero-photo img"),rule:$(".hero-b .rule"),hint:$(".hint"),lastW:-1,lastWd:-1};
 function heroUpdate(time){
   const p=hero.pin.p,H=hero;
   const fadeA=1-ss(.07,.24,p);
@@ -843,6 +868,8 @@ function heroUpdate(time){
   if(wd!==H.lastWd){H.h1.style.setProperty("--wdth",wd);H.lastWd=wd}
   H.shade.style.opacity=(ss(.5,.68,p)*.66).toFixed(3);
   const ob=ss(.55,.64,p);H.b.style.opacity=ob.toFixed(3);H.b.style.visibility=ob<.005?"hidden":"visible";
+  const php=ss(.5,.64,p);H.photo.style.opacity=php.toFixed(3);H.photo.style.visibility=php<.005?"hidden":"visible";
+  if(php>.005&&!RM){const z=ss(.5,1,p);H.photoImg.style.transform=`translate3d(0,${lerp(-2.5,3,z).toFixed(2)}%,0) scale(${lerp(1.14,1.0,z).toFixed(4)})`}
   H.rule.style.transform=`scaleX(${ss(.54,.66,p).toFixed(4)})`;
   const q=clamp((p-.62)/.3)*words.length,wi=Math.round(q*20);
   if(wi!==H.lastW){H.lastW=wi;for(let i=0;i<words.length;i++)words[i].style.opacity=(RM?1:.16+.84*clamp(q-i)).toFixed(2)}
@@ -974,6 +1001,7 @@ function frame(time){
   const pwR=pws.map(o=>o.vis?o.el.getBoundingClientRect().top:null);
   const stR=stretches.map(o=>o.vis?o.el.getBoundingClientRect().top:null);
   const thR=themes.map(el=>el.getBoundingClientRect().top);
+  const sgR=signFrame.getBoundingClientRect();
 
   /* writes */
   chalk.style.transform=`scaleY(${clamp(S.sy/S.max).toFixed(4)})`;
@@ -996,6 +1024,7 @@ function frame(time){
     const t=clamp(1-(stR[i]-S.vh*.42)/(S.vh*.58)),wd=Math.round(lerp(o.min,o.wd,eo(t))*2)/2;
     if(wd!==o.last){o.last=wd;o.el.style.setProperty("--wdth",wd)}
   });
+  if(!RM&&sgR.bottom>-50&&sgR.top<S.vh+50){const t=clamp(1-(sgR.top+sgR.height*.5)/(S.vh+sgR.height)*1);signImg.style.transform=`translate3d(0,${lerp(-1,-14,t).toFixed(2)}%,0) scale(${lerp(1.0,1.09,t).toFixed(4)})`}
   themes.forEach((el,i)=>{el.style.setProperty("--f",RM?1:clamp(1-(thR[i]-S.vh*.5)/(S.vh*.32)).toFixed(3))});
   requestAnimationFrame(frame);
 }

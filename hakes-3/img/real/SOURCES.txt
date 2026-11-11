@@ -2,3 +2,9 @@ Copied unchanged from hakes-2/img/real. Real Hakes Flooring Company photos from 
 (https://www.google.com/maps?cid=11753644349764824227), viewed Nov 10, 2026. Storefront and LVP/carpet transition also appear on ProsGrade.
 Fonts Anybody and Newsreader (open licensed) are taken from the concept reference file Sam approved.
 hakes-logo-white.png - derived from logo.jpg (white-on-transparent, background removed). Real Hakes logo, same as the sign above the store door (storefront.jpg). Source: Google Business Profile gallery cid=11753644349764824227; also ProsGrade https://blob.prosgrade.com/uploads/business-gallery/business-47828/photo-03.jpg (logo) and photo-01.jpg (storefront).
+
+Added Nov 11, 2026: rod-1, rod-2, rod-3 (-1600.jpg and -900.jpg web versions). Three real photos taken at the Hakes Flooring Company showroom/storefront (1536 E 3500 N, Suite 105, Lehi UT) and sent to Sam Johnsen by owner Rod Hakes for use on this mockup. Originals were 4032x3024 HEIC, converted to JPG (EXIF-rotated) and resized to 1600x1200 q72 and 900x675 q76.
+rod-1: showroom interior toward the front glass doors (hero scroll scene). Brand signage visible in the photo: Shaw Floors, Mohawk SmartStrand Silk, Antrim.
+rod-2: showroom interior with sample boards and a framed wall sign ("The bitterness of poor quality remains long after the sweetness of low price is forgotten", credited on the sign to Benjamin Franklin) (reviews section).
+rod-3: storefront exterior with the round Hakes Flooring Company sign (visit section; replaces storefront.jpg, which is no longer referenced on this page).
+Caption/alt used: "Hakes Flooring showroom, Lehi. Photo from Hakes."
