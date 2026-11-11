@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#170e08">
+<title>Walk through the showroom | Hakes Flooring Company, Lehi (Private concept, not the official site)</title>
+<style>
+@font-face{font-family:"Anybody";src:url(anybody.woff2) format("woff2");font-weight:100 900;font-stretch:50% 150%;font-display:block}
+@font-face{font-family:"Newsreader";src:url(newsreader.woff2) format("woff2");font-weight:200 800;font-display:swap}
+:root{
+  --walnut:#2a1c12;--deep:#170e08;--slab:#d8d4ca;--kraft:#cfb690;--bone:#f1ece2;--oak:#c29a63;
+  --chalk:#2f62d6;--chalk-lt:#8fb2ff;--line:#4a7df0;
+  --gutter:clamp(18px,4.6vw,72px);--indent:clamp(16px,2.4vw,40px);
+  --display:"Anybody","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --text:"Newsreader",Georgia,"Times New Roman",serif;
+  --ease:cubic-bezier(.2,.75,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--deep);color:var(--bone);font-family:var(--text);font-size:clamp(1.06rem,.98rem + .35vw,1.28rem);line-height:1.5;overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--line);outline-offset:3px;border-radius:4px}
+.d{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" var(--wdth,100);line-height:.94;letter-spacing:-.012em}
+.ln{display:block;overflow:hidden;white-space:nowrap;padding:.09em 0 .13em;margin:-.09em 0 -.13em}
+.small{font-family:var(--display);font-weight:600;font-variation-settings:"wdth" 96;font-size:.8em;letter-spacing:.01em;line-height:1.3}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.5em 1.5em .56em;font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 104;font-size:1rem;line-height:1.1;text-decoration:none;background:var(--bone);color:var(--walnut);border:0;border-radius:4px;cursor:pointer;transition:font-variation-settings .45s var(--ease),background .3s,color .3s}
+.btn:hover{font-variation-settings:"wdth" 124}
+.btn.blue{background:var(--chalk);color:#fff}
+
+/* preloader */
+.pre{position:fixed;inset:0;z-index:100;background:var(--deep);display:grid;place-items:center;transition:transform 1s cubic-bezier(.75,0,.2,1) .15s;animation:prefail .01s linear 6s forwards}
+.pre-in{width:min(78vw,520px)}
+.pre-name{font-size:clamp(1.3rem,4.6vw,2rem);--wdth:70;display:flex;justify-content:space-between;align-items:baseline}
+.pre-name i{font-style:normal;font-weight:500;font-size:.62em;opacity:.7}
+.pre-line{height:2px;background:var(--line);margin-top:14px;transform:scaleX(0);transform-origin:left;animation:preline 1.1s var(--ease) .1s forwards}
+@keyframes preline{0%{transform:scaleX(0)}55%{transform:scaleX(1)}66%{transform:scaleX(1) translateY(-5px)}77%{transform:scaleX(1) translateY(3px)}88%{transform:scaleX(1) translateY(-1.5px)}100%{transform:scaleX(1)}}
+@keyframes prefail{to{transform:translateY(-101%)}}
+.is-ready .pre{transform:translateY(-101%)}
+
+/* fixed furniture */
+.chalk{position:fixed;top:0;left:var(--gutter);width:2px;height:100vh;height:100lvh;background:var(--line);transform:scaleY(0);transform-origin:top;z-index:40;pointer-events:none;opacity:.9}
+.nav{position:fixed;z-index:50;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px var(--gutter) 12px calc(var(--gutter) + var(--indent));color:var(--bone);transition:transform .5s var(--ease)}
+.nav.hide{transform:translateY(-110%)}
+.brand{display:flex;align-items:center;text-decoration:none}
+.brand .logo{display:block;flex:none;height:56px;aspect-ratio:700/600;background:currentColor;-webkit-mask:url(img/hakes-logo-white.png) center/contain no-repeat;mask:url(img/hakes-logo-white.png) center/contain no-repeat}
+.nav .btn{min-height:44px;padding:.4em 1.1em .46em;font-size:.9rem}
+.nav-back{display:none;font-family:var(--display);font-weight:600;font-variation-settings:"wdth" 96;font-size:.95rem;text-decoration:none;margin-left:auto;margin-right:8px}
+@media(min-width:760px){.nav-back{display:block}}
+.concept{position:fixed;z-index:60;right:10px;bottom:10px;max-width:calc(100vw - 20px);padding:.4em .8em .46em;border-radius:4px;background:var(--chalk);color:#fff;font-family:var(--display);font-weight:600;font-variation-settings:"wdth" 90;font-size:.7rem;line-height:1.28;box-shadow:0 6px 24px rgba(10,5,0,.35)}
+.concept span{display:block;opacity:.82;font-weight:500}
+
+/* pinned stage */
+.pin{position:relative;height:calc(var(--len) * 100vh);height:calc(var(--len) * 100svh)}
+.pin-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0c0705}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(8,4,2,.5) 100%)}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-size:160px}
+.shade{position:absolute;left:0;right:0;bottom:0;height:46%;pointer-events:none;background:linear-gradient(to top,rgba(14,8,4,.78),rgba(14,8,4,0));opacity:var(--shade,1)}
+
+/* hero copy */
+.hero-copy{position:absolute;left:calc(var(--gutter) + var(--indent));right:var(--gutter);bottom:calc(110px + env(safe-area-inset-bottom));will-change:transform,opacity;z-index:5}
+.hero-copy .kick{font-size:.82rem;margin-bottom:.9em;color:var(--bone);opacity:.85}
+.hero-copy h1{font-size:clamp(2.1rem,8.8vw,5.4rem);--wdth:100}
+.hero-copy .lede{max-width:30ch;margin-top:1em;color:var(--bone);opacity:.92}
+.hint{display:flex;align-items:center;gap:.7em;margin-top:1.4em;font-size:.78rem;opacity:.85}
+.hint i{display:block;width:2px;height:28px;background:var(--line);transform-origin:top;animation:hint 1.8s var(--ease) infinite}
+@keyframes hint{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media(min-width:900px){.hero-copy{bottom:12vh}.hero-copy h1{font-size:clamp(3.4rem,6.6vw,7rem)}}
+
+/* frosted glass labels */
+.lab{position:absolute;z-index:6;left:calc(var(--gutter) + var(--indent));width:min(calc(100vw - var(--gutter) - var(--indent) - 18px),400px);bottom:calc(76px + env(safe-area-inset-bottom));padding:16px 18px 17px;border-radius:4px;color:var(--bone);
+  background:linear-gradient(135deg,rgba(241,236,226,.20),rgba(241,236,226,.07));-webkit-backdrop-filter:blur(18px) saturate(1.25);backdrop-filter:blur(18px) saturate(1.25);
+  border:1px solid rgba(241,236,226,.30);box-shadow:0 14px 40px rgba(8,4,2,.35),inset 0 1px 0 rgba(255,255,255,.22);
+  opacity:0;visibility:hidden;will-change:transform,opacity}
+.lab::before{content:"";position:absolute;left:-1px;top:14px;bottom:14px;width:3px;border-radius:2px;background:var(--line)}
+.lab h2{font-size:clamp(1.55rem,6.8vw,2.3rem);--wdth:100;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.lab p{margin-top:.5em;font-size:.92em;line-height:1.35;opacity:.92}
+.lab .tag{display:block;font-size:.7rem;color:var(--chalk-lt);margin-bottom:.7em}
+@media(min-width:900px){.lab{bottom:13vh;width:420px;padding:20px 24px 22px}}
+.leader{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:visible}
+.leader line{stroke:rgba(241,236,226,.85);stroke-width:1.5}
+.leader circle.o{fill:none;stroke:rgba(241,236,226,.9);stroke-width:1.5}
+.leader circle.i{fill:var(--bone)}
+
+.lab .fine{font-size:.74rem;opacity:.75;margin-top:.9em;line-height:1.3}
+
+/* final CTA */
+.cta{position:absolute;z-index:7;left:calc(var(--gutter) + var(--indent));right:var(--gutter);bottom:calc(80px + env(safe-area-inset-bottom));opacity:0;visibility:hidden}
+.cta .card{padding:18px 18px 20px;border-radius:4px;max-width:440px;background:linear-gradient(135deg,rgba(23,14,8,.62),rgba(23,14,8,.38));-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(241,236,226,.26)}
+.cta h2{font-size:clamp(1.9rem,8.4vw,3rem);--wdth:100}
+.cta p{margin-top:.6em;font-size:.95em;opacity:.92;max-width:34ch}
+.cta .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.1em}
+.cta .btn{flex:1 1 150px}
+@media(min-width:900px){.cta{bottom:13vh}.cta .card{padding:24px 26px 26px}}
+
+/* after the walk */
+.after{position:relative;background:var(--slab);color:var(--walnut);padding:clamp(40px,8vh,90px) var(--gutter) 96px calc(var(--gutter) + var(--indent))}
+.after::before{content:"";position:absolute;top:0;left:var(--gutter);right:0;height:2px;background:var(--line)}
+.after h2{font-size:clamp(2.2rem,9vw,4.4rem);--wdth:104}
+.after .facts{margin-top:1.4em;display:grid;gap:1em;max-width:34em}
+.after .facts h3{font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 96;font-size:.8rem;opacity:.7;margin-bottom:.15em}
+.after .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.6em}
+.after .btn{background:var(--walnut);color:var(--bone)}
+.after .btn.blue{background:var(--chalk);color:#fff}
+.after .honest{margin-top:2.2em;font-size:.82em;line-height:1.4;max-width:42em;opacity:.78}
+.after .powered{margin-top:2em;font-family:var(--display);font-weight:600;font-variation-settings:"wdth" 96;font-size:.82rem;opacity:.8}
+
+/* fallback (no WebGL or reduced motion) */
+.fb{display:none}
+.fallback .pin,.fallback .chalk,.fallback .leader{display:none}
+.fallback .fb{display:block}
+.fb-step{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--deep)}
+.fb-step img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fb-step::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,8,4,.82),rgba(14,8,4,0) 55%)}
+.fb-step .lab{position:relative;visibility:visible;opacity:1;left:auto;bottom:auto;margin:0 0 76px calc(var(--gutter) + var(--indent));z-index:2;will-change:auto}
+.fb-step.first .lab h2{font-size:clamp(2rem,9vw,3.4rem)}
+.fb-step .cta{position:relative;visibility:visible;opacity:1;left:auto;right:auto;bottom:auto;margin:0 var(--gutter) 80px calc(var(--gutter) + var(--indent));z-index:2}
+.fb-note{padding:14px var(--gutter) 14px calc(var(--gutter) + var(--indent));font-size:.8rem;background:var(--walnut);color:var(--bone)}
+.fb-step[data-pos="l"] img{object-position:0% 60%}
+.fb-step[data-pos="r"] img{object-position:100% 60%}
+.fb-step[data-pos="c"] img{object-position:42% 40%}
+@media(min-width:900px){.fb-step .lab{margin-bottom:13vh}}
+noscript .nojs{position:fixed;inset:0;z-index:200;background:var(--deep);padding:40px var(--gutter)}
+</style>
+</head>
+<body>
+<div class="pre" aria-hidden="true"><div class="pre-in"><div class="pre-name d"><b>Hakes Flooring</b><i>Lehi, Utah</i></div><div class="pre-line"></div></div></div>
+<div class="chalk" id="chalk" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="../hakes-3/" aria-label="Hakes Flooring Company concept home"><span class="logo" role="img" aria-label="Hakes Flooring Company logo"></span></a>
+  <a class="nav-back" href="../hakes-3/">Back to the main concept</a>
+  <a class="btn" href="../hakes-3/#estimate">Free estimate</a>
+</header>
+
+<div class="concept" role="note">Concept design. Not the official Hakes Flooring site.<span>Stylized 3D model based on a showroom walkthrough video.</span></div>
+
+<main>
+<section class="pin" id="walk" style="--len:9" aria-label="Scroll to walk through a 3D model of the Hakes Flooring showroom">
+  <div class="pin-stage" id="stage">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="shade" id="shade" aria-hidden="true"></div>
+    <div class="vig" aria-hidden="true"></div>
+    <div class="grain" id="grain" aria-hidden="true"></div>
+    <svg class="leader" id="leader" aria-hidden="true"><line id="ll" x1="0" y1="0" x2="0" y2="0"/><circle class="o" id="lo" r="9" cx="0" cy="0"/><circle class="i" id="li" r="3.5" cx="0" cy="0"/></svg>
+
+    <div class="hero-copy" id="heroCopy">
+      <p class="kick small">Hakes Flooring Company &middot; Lehi, Utah &middot; Suite 105</p>
+      <h1 class="d" id="h1"><span class="ln"><span>Walk through</span></span><span class="ln"><span>our showroom</span></span></h1>
+      <p class="lede">Scroll and step inside. Carpet walls, sample boards and all.</p>
+      <div class="hint small" aria-hidden="true"><i></i>Scroll to walk in</div>
+    </div>
+
+    <div class="lab" id="lab-in" role="group">
+      <span class="tag small">Suite 105</span>
+      <h2 class="d">Step inside</h2>
+      <p>Through the glass doors and under the black beams.</p>
+    </div>
+    <div class="lab" id="lab-anderson" role="group">
+      <span class="tag small">Left wall</span>
+      <h2 class="d">Anderson Tuftex</h2>
+      <p>Tall carpet racks, lit by black gooseneck barn lamps.</p>
+    </div>
+    <div class="lab" id="lab-dixie" role="group">
+      <span class="tag small">Left wall, further back</span>
+      <h2 class="d">Dixie Home and TAS Flooring</h2>
+      <p>More carpet and flooring displays along the wall.</p>
+    </div>
+    <div class="lab" id="lab-mohawk" role="group">
+      <span class="tag small">Left wall, by the screen</span>
+      <h2 class="d">Mohawk SmartStrand</h2>
+      <p>Carpet samples next to a digital screen.</p>
+    </div>
+    <div class="lab" id="lab-back" role="group">
+      <span class="tag small">Back wall</span>
+      <h2 class="d">The back room</h2>
+      <p>An open doorway to storage, with carpet rolls stacked inside.</p>
+    </div>
+    <div class="lab" id="lab-desk" role="group">
+      <span class="tag small">Back right</span>
+      <h2 class="d">The desk</h2>
+      <p>Two brass drum lamps hang over it.</p>
+    </div>
+    <div class="lab" id="lab-boards" role="group">
+      <span class="tag small">Center floor</span>
+      <h2 class="d">Wood-look sample boards</h2>
+      <p>Big flat boards in low racks, staggered down the middle.</p>
+    </div>
+    <div class="lab" id="lab-right" role="group">
+      <span class="tag small">Right wall</span>
+      <h2 class="d">Shaw Floors and Naturally Aged Flooring</h2>
+      <p>Shaw under the framed quote, and two tall racks by the window.</p>
+    </div>
+    <div class="lab" id="lab-antrim" role="group">
+      <span class="tag small">Front right corner</span>
+      <h2 class="d">Antrim Hand-Loomed Carpets &amp; Rugs</h2>
+      <p>The last stop, just inside the front glass.</p>
+    </div>
+    <div class="cta" id="cta">
+      <div class="card">
+        <h2 class="d">Visit the showroom</h2>
+        <p>Suite 105 in Lehi. Come see the real boards, books and rugs.</p>
+        <div class="row">
+          <a class="btn" href="../hakes-3/#visit">Visit the showroom</a>
+          <a class="btn blue" href="../hakes-3/#estimate">Get a free estimate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fb" id="fb" aria-label="Photo walkthrough of the showroom">
+  <div class="fb-step first" data-pos="c"><picture><source media="(max-width:760px)" data-srcset="img/fb-01-entrance-p.jpg"><img data-src="img/fb-01-entrance-l.jpg" width="1080" height="675" alt="Inside the Hakes Flooring showroom, looking toward the back wall from the entrance. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="lab"><span class="tag small">Suite 105</span><h2 class="d">Walk through our showroom</h2><p>Hakes Flooring Company, Lehi, Utah. Stills from a walkthrough video, in order.</p></div></div>
+  <div class="fb-step" data-pos="c"><picture><source media="(max-width:760px)" data-srcset="img/fb-02-anderson-tuftex-p.jpg"><img data-src="img/fb-02-anderson-tuftex-l.jpg" width="1080" height="675" alt="Anderson Tuftex carpet rack on the left wall. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="lab"><span class="tag small">Left wall</span><h2 class="d">Anderson Tuftex</h2><p>Tall carpet racks, lit by black gooseneck barn lamps.</p></div></div>
+  <div class="fb-step" data-pos="c"><picture><source media="(max-width:760px)" data-srcset="img/fb-03-dixie-home-p.jpg"><img data-src="img/fb-03-dixie-home-l.jpg" width="1080" height="675" alt="Dixie Home display and TAS Flooring sign on the left wall. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="lab"><span class="tag small">Left wall, further back</span><h2 class="d">Dixie Home and TAS Flooring</h2><p>More carpet and flooring displays along the wall.</p></div></div>
+  <div class="fb-step" data-pos="c"><picture><source media="(max-width:760px)" data-srcset="img/fb-04-back-room-desk-p.jpg"><img data-src="img/fb-04-back-room-desk-l.jpg" width="1080" height="675" alt="Back wall with a storage room doorway, the desk and sample boards. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="lab"><span class="tag small">Back wall</span><h2 class="d">The back room and the desk</h2><p>An open doorway to storage, with carpet rolls stacked inside.</p></div></div>
+  <div class="fb-step" data-pos="c"><picture><source media="(max-width:760px)" data-srcset="img/fb-05-right-wall-quote-p.jpg"><img data-src="img/fb-05-right-wall-quote-l.jpg" width="1080" height="675" alt="Right wall with a Shaw display, a framed quote and two tall Naturally Aged Flooring racks. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="lab"><span class="tag small">Right wall</span><h2 class="d">Shaw Floors and Naturally Aged Flooring</h2><p>Shaw under the framed quote, and two tall racks by the window.</p></div></div>
+  <div class="fb-step" data-pos="c"><picture><source media="(max-width:760px)" data-srcset="img/fb-06-antrim-corner-p.jpg"><img data-src="img/fb-06-antrim-corner-l.jpg" width="1080" height="675" alt="Antrim Hand-Loomed Carpets and Rugs rack in the front right corner. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="lab"><span class="tag small">Front right corner</span><h2 class="d">Antrim Hand-Loomed Carpets &amp; Rugs</h2><p>The last stop, just inside the front glass.</p></div></div>
+  <div class="fb-step" data-pos="r"><picture><source media="(max-width:760px)" data-srcset="img/fb-06-antrim-corner-p.jpg"><img data-src="img/fb-06-antrim-corner-l.jpg" width="1080" height="675" alt="Antrim rack in the front right corner of the showroom. Frame from a walkthrough video by Hakes." decoding="async"></picture><div class="cta"><div class="card"><h2 class="d">Visit the showroom</h2><p>Suite 105 in Lehi. Come see the real boards, books and rugs.</p><div class="row"><a class="btn" href="../hakes-3/#visit">Visit the showroom</a><a class="btn blue" href="../hakes-3/#estimate">Get a free estimate</a></div></div></div></div>
+  <p class="fb-note small">Photo version of the walkthrough. Stills from a video by Hakes.</p>
+</section>
+
+<section class="after" id="after">
+  <h2 class="d">Come stand on a few</h2>
+  <div class="facts">
+    <div><h3 class="small">Showroom</h3><p>1536 E 3500 N, Suite 105<br>Lehi, UT 84043</p></div>
+    <div><h3 class="small">About this model</h3><p>A simplified 3D model built from photos and a walkthrough video Rod Hakes shared. Layout, shapes and sizes are approximate and stylized, so it is not to scale and it is not a floor plan.</p></div>
+  </div>
+  <div class="row">
+    <a class="btn" href="../hakes-3/#visit">Visit the showroom</a>
+    <a class="btn blue" href="../hakes-3/#estimate">Get a free estimate</a>
+  </div>
+  <p class="honest">Concept design. Not the official Hakes Flooring site. Stylized 3D model based on a showroom walkthrough video. Brands shown are only the ones visible in that video: Anderson Tuftex, TAS Flooring, Dixie Home, Mohawk SmartStrand, Shaw Floors, Naturally Aged Flooring and Antrim.</p>
+  <p class="powered">Powered by Apex Local Sites</p>
+</section>
+</main>
+<noscript><div class="nojs"><p>This page needs JavaScript. Open <a href="../hakes-3/">the main concept</a> instead.</p></div></noscript>
+<script type="module" src="app.js"></script>
+</body>
+</html>
