@@ -25,7 +25,7 @@ em{font-style:normal;color:var(--o)}img{max-width:100%;display:block}a{color:var
 .stage{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));height:calc(100svh - var(--navh));overflow:hidden;color:#fff}
 .pin-truck .stage{padding:18px clamp(14px,4vw,56px);display:flex;flex-direction:column;gap:10px}
 .t-head .mega{font-size:clamp(2.2rem,6.2vw,5.4rem);color:#fff;margin:0}.t-head .eyebrow{margin-bottom:6px}
-.t-body{flex:1;min-height:0;display:grid;grid-template-columns:1.85fr 1fr;gap:clamp(12px,2vw,28px);align-items:center}
+.t-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:clamp(12px,2vw,28px);align-items:center}
 .t-svg{position:relative}.t-svg svg{width:100%;height:auto;max-height:64vh;display:block;overflow:visible}
 .t-count{position:absolute;right:4px;top:-4px;font:800 .9rem Inter;color:var(--o);letter-spacing:.14em}
 #truckSvg .part{transition:opacity .35s}
@@ -34,7 +34,7 @@ em{font-style:normal;color:var(--o)}img{max-width:100%;display:block}a{color:var
 #truckSvg .ghost{opacity:.5;transition:opacity .35s}#truckSvg .part.on .ghost{opacity:1}
 #truckSvg .pulse{animation:pls 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes pls{0%,100%{opacity:.25}50%{opacity:.9}}
 .t-panel{display:flex;flex-direction:column;gap:12px}
-.t-words{position:relative;height:clamp(2.8rem,6.4vw,6.2rem)}.t-words span{position:absolute;left:0;top:0;font:800 clamp(2.6rem,6.2vw,6rem)/.9 Inter;text-transform:uppercase;letter-spacing:-.045em;color:var(--o);opacity:0;transform:translateX(-24px);transition:opacity .4s,transform .5s}.t-words span.on{opacity:1;transform:none}
+.t-words{position:relative;height:clamp(2.4rem,4.8vw,4.8rem)}.t-words span{position:absolute;left:0;top:0;font:800 clamp(2.2rem,4.5vw,4.6rem)/.9 Inter;text-transform:uppercase;letter-spacing:-.045em;color:var(--o);opacity:0;transform:translateX(-24px);transition:opacity .4s,transform .5s}.t-words span.on{opacity:1;transform:none}
 .t-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}.t-list li{background:rgba(255,255,255,.07);border-left:4px solid var(--o);padding:10px 14px;border-radius:8px;font-weight:700;opacity:0;transform:translateY(12px);transition:opacity .4s,transform .5s}.t-list li.in{opacity:1;transform:none}.t-list li span{display:block;font-weight:400;font-size:13px;color:#b9bec2}
 /* offroad + mud */
 .off-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.off-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.65))}
