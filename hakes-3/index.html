@@ -770,7 +770,14 @@ void main(){
 }`;
 class Room{
   constructor(cv){
-    this.cv=cv;
+    this.cv=cv;this.lost=false;this.onLost=null;this.onRestore=null;
+    this.init();
+    /* if the browser drops the GL context (memory pressure, tab switch, GPU reset) rebuild everything when it comes back, so the scene never stays black */
+    cv.addEventListener("webglcontextlost",e=>{e.preventDefault();this.lost=true;if(this.onLost)this.onLost()});
+    cv.addEventListener("webglcontextrestored",()=>{try{this.init();this.lost=false;if(this.onRestore)this.onRestore()}catch(err){console.warn("webgl restore failed",err)}});
+  }
+  init(){
+    const cv=this.cv;
     const gl=this.gl=cv.getContext("webgl",{antialias:false,alpha:false,powerPreference:"high-performance"})||cv.getContext("experimental-webgl");
     if(!gl)throw new Error("no webgl");
     const sh=(t,src)=>{const s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s};
@@ -781,7 +788,6 @@ class Room{
     const l=gl.getAttribLocation(pr,"p");gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);
     this.u={};["uRes","uA","uB","uSA","uSB","uGA","uGB","uMix","uCam","uPitch","uYaw","uFocal","uFog","uExpo","uTime","uRoom","uWin","uHalo","uAmb","uWall"].forEach(n=>this.u[n]=gl.getUniformLocation(pr,n));
     this.aniso=gl.getExtension("EXT_texture_filter_anisotropic")||gl.getExtension("WEBKIT_EXT_texture_filter_anisotropic");
-    this.lost=false;cv.addEventListener("webglcontextlost",e=>{e.preventDefault();this.lost=true});
   }
   tex(canvas){
     const gl=this.gl,t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
@@ -1048,18 +1054,21 @@ function boot(){
   try{
     hero.gl=new Room($("#heroGL"));heroTex.t=hero.gl.tex(heroTex.c);heroTex.gloss=.85;
     const hc=$("#heroGL");hc._gl=hero;io.observe(hc);
+    const hf=$(".hero-fallback");
+    hero.gl.onLost=()=>{hc.style.visibility="hidden";if(MATS[0].url)hf.style.backgroundImage=`url(${MATS[0].url})`;hf.style.display="block"};
+    hero.gl.onRestore=()=>{heroTex.t=hero.gl.tex(heroTex.c);hf.style.display="none";hc.style.visibility="";hero.dirty=true};
   }catch(e){
     console.warn("hero webgl unavailable",e);hero.gl=null;$("#heroGL").style.display="none";
     const f=$(".hero-fallback");f.style.display="block";if(MATS[0].url)f.style.backgroundImage=`url(${MATS[0].url})`;
   }
   try{
     viz.gl=new Room(viz.cv);MATS.forEach(m=>{m.t=viz.gl.tex(m.c)});viz.cv._gl=viz;io.observe(viz.cv);
+    viz.gl.onRestore=()=>{MATS.forEach(m=>{m.t=viz.gl.tex(m.c)});viz.dirty=true};
   }catch(e){
     console.warn("room webgl unavailable",e);viz.gl=null;
     const v=$(".viz-view");v.style.backgroundSize="420px";
     v.style.backgroundImage=`url(${MATS[0].url})`;
   }
-  heroTex.c=null;
   const go=()=>{
     fit();measure();vizDims();
     hero.t0=performance.now();document.body.classList.remove("is-loading");document.body.classList.add("is-ready");
