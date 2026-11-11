@@ -2,57 +2,73 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Frost Landscape | Utah Landscape Contractor Since 2002 (Concept)</title>
-<link rel="stylesheet" href="fonts/fonts.css"><link rel="stylesheet" href="styles.css">
+<title>Frost Landscape | Utah Landscape Contractor Since 2002 (Concept showpiece)</title>
+<link rel="stylesheet" href="fonts/fonts.css"><link rel="stylesheet" href="v2.css">
 </head><body>
-<div class="concept-bar">Private design concept by Apex Local Sites. All demos are simulated and store nothing.</div>
-<header class="nav"><a class="brand" href="#top"><span class="flake">❄</span> Frost Landscape</a>
-<nav><a href="#services">Services</a><a href="#work">Work</a><a href="#demos">See it work</a><a href="#quote">Free estimate</a></nav>
+<div class="concept-bar">Private design concept by Apex Local Sites. Not the live site. Real project photos are Frost's; the seasons scene uses AI edits of one real photo.</div>
+<header class="nav" id="nav"><a class="brand" href="#top"><span class="flake">❄</span> Frost Landscape</a>
+<nav><a href="#top">The lawn</a><a href="#seasons">All seasons</a><a href="#services">Services</a><a href="#work">Work</a><a href="#quote">Free estimate</a></nav>
 <a class="btn sm" href="tel:+18018562909">801-856-2909</a></header>
 
-<section class="hero" id="top">
- <img src="img/PoolPatio-Stone.jpg" alt="Stone pool patio by Frost Landscape" class="hero-bg">
- <div class="hero-in">
-  <p class="eyebrow">Licensed and bonded in Utah · Since 2002</p>
-  <h1>Making the Valley green,<br>one yard at a time.</h1>
-  <p class="lead">Design, install, and year-round care for homes and businesses from Salt Lake to Provo. Patios, sod, sprinklers, walls, lighting, and snow removal when winter hits.</p>
-  <div class="cta"><a class="btn" href="#quote">Get a free estimate</a><a class="btn ghost" href="#demos">Chat with our assistant</a></div>
-  <ul class="chips"><li>Residential</li><li>Commercial</li><li>Snow &amp; Ice</li><li>Maintenance plans</li></ul>
+<section class="pin pin-lawn" id="top" data-pin="lawn" aria-label="Frost Landscape">
+ <div class="stage" id="lawnStage">
+  <img src="img/PoolPatio-Stone.jpg" alt="Stone pool patio by Frost Landscape" class="fallback">
+  <canvas id="lawnCv" aria-hidden="true"></canvas>
+  <div class="card hero-in" id="lawnCard">
+   <p class="eyebrow">Licensed and bonded in Utah · Since 2002</p>
+   <h1>Making the Valley green,<br>one yard at a time.</h1>
+   <p class="lead">Design, install, and year-round care for homes and businesses from Salt Lake to Provo. Patios, sod, sprinklers, walls, lighting, and snow removal when winter hits.</p>
+   <div class="cta"><a class="btn" href="#quote">Get a free estimate</a><a class="btn ghost" href="#seasons">See the yard all year</a></div>
+   <ul class="chips"><li>Residential</li><li>Commercial</li><li>Snow &amp; Ice</li><li>Maintenance plans</li></ul>
+  </div>
+  <div class="hud" aria-hidden="true"><span id="lawnCap">Bare dirt. Fresh sod on the way.</span><i><b id="lawnBar"></b></i><em id="lawnHint">Scroll to roll out the lawn</em></div>
  </div>
 </section>
 
-<section class="stats"><div><b>2002</b><span>Making Utah green since</span></div><div><b>3</b><span>Divisions: residential, commercial, snow</span></div><div><b>5</b><span>Counties served</span></div><div><b>24/7</b><span>AI assistant answers and books</span></div></section>
+<section class="pin pin-seasons" id="seasons" data-pin="seasons">
+ <div class="stage" id="seasonStage">
+  <div class="s-frame" id="sFrame">
+   <img class="s0" src="img/season-winter.jpg" alt="Backyard in winter with snow (AI edit of a real Frost photo)">
+   <img class="s1" src="img/season-spring.jpg" alt="Same yard in spring bloom (AI edit)">
+   <img class="s2" src="img/season-fall.jpg" alt="Same yard in fall color (AI edit)">
+   <img class="s3" src="img/season-night.jpg" alt="Same yard at night with landscape lighting on (AI edit)">
+   <canvas id="sCv" aria-hidden="true"></canvas>
+   <i class="s-shade"></i>
+   <div class="s-words" id="sWords"><span class="on">Winter</span><span>Spring</span><span>Fall</span><span>Night</span></div>
+   <div class="s-side"><p class="eyebrow light">One yard, all year</p><p id="sNote">Snow and ice management keeps lots and walks clear all winter.</p><ol class="s-dots" id="sDots"><li class="on">Winter</li><li>Spring</li><li>Fall</li><li>Night</li></ol></div>
+  </div>
+  <p class="fine">Same yard, four seasons. The base is a real Frost project photo (frostlandscape.net); the seasons and the lighting are AI edits for this concept.</p>
+ </div>
+</section>
 
-<section id="services" class="wrap"><h2>Everything outside your door</h2><p class="sub">The full Frost Landscape specialty list, now easy to browse.</p>
-<div class="grid svc" id="svcGrid"></div></section>
+<section class="wrap" id="services">
+ <div class="stats"><div><b>2002</b><span>Making Utah green since</span></div><div><b>3</b><span>Divisions: residential, commercial, snow</span></div><div><b>5</b><span>Counties served</span></div><div><b>14</b><span>Services, one crew</span></div></div>
+ <h2 class="mega">Everything outside your door.</h2>
+ <div class="svc" id="svcGrid"></div>
+</section>
 
-<section id="work" class="wrap"><h2>Recent work</h2><p class="sub">Real Frost Landscape project photos.</p>
-<div class="gallery">
- <figure><img src="img/PoolPatio-Stone.jpg" alt="Stone pool patio" loading="lazy"><figcaption>Stone pool patio</figcaption></figure>
- <figure><img src="img/SOD.jpg" alt="New sod lawn" loading="lazy"><figcaption>New sod install</figcaption></figure>
- <figure><img src="img/DreamsComeTtrue.jpg" alt="Finished backyard" loading="lazy"><figcaption>Full backyard build</figcaption></figure>
- <figure><img src="img/valley.jpg" alt="Utah valley" loading="lazy"><figcaption>Serving the Wasatch Front</figcaption></figure>
-</div></section>
+<section class="wrap" id="work">
+ <div class="gallery">
+  <figure><img src="img/PoolPatio-Stone.jpg" alt="Stone pool patio" loading="lazy"><figcaption>Stone pool patio</figcaption></figure>
+  <figure><img src="img/SOD.jpg" alt="New sod lawn" loading="lazy"><figcaption>New sod install</figcaption></figure>
+  <figure><img src="img/DreamsComeTtrue.jpg" alt="Finished backyard" loading="lazy"><figcaption>Full backyard build</figcaption></figure>
+  <figure><img src="img/valley.jpg" alt="Utah valley" loading="lazy"><figcaption>Serving the Wasatch Front</figcaption></figure>
+ </div>
+ <p class="cities"><b>Where we work:</b> Davis, Salt Lake, Summit, Tooele, and Utah counties. Bountiful · Salt Lake City · Park City · Tooele · Murray · Holladay · Sandy · Draper · South Jordan · Herriman · Lehi · American Fork · Orem · Provo</p>
+</section>
 
-<section class="wrap area"><h2>Where we work</h2><p class="sub">Davis, Salt Lake, Summit, Tooele, and Utah counties.</p>
-<div class="cities">Bountiful · Salt Lake City · Park City · Tooele · Murray · Holladay · Sandy · Draper · South Jordan · Herriman · Lehi · American Fork · Orem · Provo</div></section>
-
-<section id="demos" class="demos"><div class="wrap">
-<p class="eyebrow dark">Powered by Apex Local Sites</p><h2>See what this site does for Frost</h2><p class="sub">Every demo below is simulated with fake sample info. Nothing is sent or stored.</p>
-<div class="tabs" id="tabs"></div><div id="panels"></div></div></section>
-
-<section id="quote" class="wrap quote"><h2>Get your free estimate</h2><p class="sub">Tell us about your yard. We call back within one business day. <span class="tag">Simulated</span></p>
-<form id="quoteForm" class="card form" novalidate>
- <div class="row"><label>Name<input name="name" required></label><label>Phone<input name="phone" type="tel" required></label></div>
- <div class="row"><label>Email<input name="email" type="email" required></label><label>Property address<input name="address" required></label></div>
- <label>Project<select name="svc" id="quoteSvc"></select></label>
- <label>Budget<select name="budget"><option>Under $10k</option><option>$10k to $25k</option><option>$25k to $75k</option><option>$75k plus</option></select></label>
- <label>Details<textarea name="msg" rows="3" placeholder="Backyard patio and new sprinklers..."></textarea></label>
- <div class="row"><button type="button" class="btn ghost dk fill">Use demo info</button><button class="btn">Request estimate</button></div>
- <p class="fine">Demo form. Nothing is stored or sent.</p><div class="out"></div>
-</form></section>
+<section id="quote" class="wrap quote">
+ <div class="q-l"><p class="eyebrow dark">Powered by Apex Local Sites</p><h2 class="mega">Free estimate.</h2><p class="sub">Tell us about your yard. We call back within one business day. <span class="tag">Simulated</span></p></div>
+ <div class="q-r"><form id="quoteForm" class="card form" novalidate>
+  <div class="row"><label>Name<input name="name"></label><label>Phone<input name="phone" type="tel"></label></div>
+  <div class="row"><label>Email<input name="email" type="email"></label><label>Property address<input name="address"></label></div>
+  <div class="row"><label>Project<select name="svc" id="quoteSvc"></select></label><label>Time<select name="slot"><option>Thu 9:00 AM</option><option>Thu 1:00 PM</option><option>Fri 10:00 AM</option><option>Mon 8:30 AM</option></select></label></div>
+  <div class="row"><button type="button" class="btn ghost dk fill">Use demo info</button><button class="btn">Book my estimate</button></div>
+  <p class="fine err"></p><div class="out"></div>
+ </form></div>
+</section>
 
 <footer><div class="wrap foot"><div><b>Frost Landscape Inc.</b><br>PO Box 900175, Sandy, UT 84093<br><a href="tel:+18018562909">801-856-2909</a></div>
 <div class="pw">Powered by <a href="https://apexlocalsites.com">Apex Local Sites</a></div></div></footer>
-<a class="fab" href="#demos" id="fab">💬 Ask Frost</a>
-<script src="app.js"></script></body></html>
+<a class="fab" href="#quote">Free estimate</a>
+<script src="v2.js"></script><script src="lawn.js"></script><script src="seasons.js"></script></body></html>
