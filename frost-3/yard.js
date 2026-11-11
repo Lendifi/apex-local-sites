@@ -135,9 +135,9 @@ const float FH=1.8;
 float h1(float n){return fract(sin(n*127.1+3.7)*43758.5453);}
 vec3 backdrop(vec3 rd){
   float el=rd.y/max(length(rd.xz),1e-3),az=atan(rd.x,rd.z);
-  vec3 sky=mix(vec3(2.1,2.3,2.4),vec3(.3,.85,2.6),smoothstep(0.,.5,el));
+  vec3 sky=mix(vec3(2.4,2.8,3.1),vec3(.1,.45,1.9),smoothstep(0.,.5,el));
   float ridge=.14+.07*sin(az*3.+1.3)+.04*sin(az*8.+.4)+.016*sin(az*19.+2.)+.007*sin(az*43.);
-  vec3 mtn=mix(vec3(.28,.4,.62),vec3(1.7,1.8,2.1),smoothstep(ridge-.035,ridge-.004,el));
+  vec3 mtn=mix(vec3(.12,.28,.62),vec3(1.7,1.85,2.2),smoothstep(ridge-.035,ridge-.004,el));
   vec3 col=mix(mtn,sky,smoothstep(ridge-.004,ridge+.004,el));
   float tl=.016+.016*sin(az*17.+.7)+.01*sin(az*41.+1.)+.008*sin(az*89.)+.006*h1(floor(az*140.));
   vec3 tr=vec3(.08,.16,.07)*(.8+.5*h1(floor(az*55.)));
@@ -177,7 +177,7 @@ void main(){
     wood*=.86+.28*h1(floor(pos.y*4.)*.61+id*1.7);
     wood*=.35+.65*smoothstep(0.,.05,fr)*smoothstep(1.,.95,fr);
     float pc=fract(cc/1.9);if(pc<.045||pc>.985)wood=vec3(.52,.4,.29)*(.9+.2*h1(floor(cc/1.9)));
-    if(pos.y>FH-.07)wood=vec3(.6,.47,.34);
+    if(pos.y>FH-.1)wood=vec3(.012,.07,.31)*(.8+.5*smoothstep(FH-.1,FH,pos.y));
     wood*=.55+.45*smoothstep(0.,.25,pos.y);
     float ndl=t==tB?SUN.z*-1.:(t==tR?-SUN.x:SUN.x);ndl=max(ndl,0.);
     L=wood*(amb*1.5+sunc*ndl*.55);
@@ -331,7 +331,7 @@ const proc={pin:pinOf("process"),steps:$$(".step"),bar:$(".proc-bar"),outline:$(
   }
   const cg=$("#chips"),cols=["#5d9a35","#a89478","#b9a58a","#5b3a24","#8c93a0"];
   cols.forEach((c,i)=>{const e=document.createElementNS(NS,"rect");
-    e.setAttribute("x",120+i*50);e.setAttribute("y",120);e.setAttribute("width",40);e.setAttribute("height",150);e.setAttribute("rx",3);e.setAttribute("fill",c);e.setAttribute("stroke","#10241a");e.setAttribute("stroke-width",2);e.setAttribute("class","chip");
+    e.setAttribute("x",120+i*50);e.setAttribute("y",120);e.setAttribute("width",40);e.setAttribute("height",150);e.setAttribute("rx",3);e.setAttribute("fill",c);e.setAttribute("stroke","#0A1F45");e.setAttribute("stroke-width",2);e.setAttribute("class","chip");
     e.style.transitionDelay=(i*60)+"ms";cg.appendChild(e);proc.chips.push(e)});
 })();
 function procUpdate(){
