@@ -1,3 +1,4 @@
 Copied unchanged from hakes-2/img/real. Real Hakes Flooring Company photos from the Google Business Profile photo gallery
 (https://www.google.com/maps?cid=11753644349764824227), viewed Nov 10, 2026. Storefront and LVP/carpet transition also appear on ProsGrade.
 Fonts Anybody and Newsreader (open licensed) are taken from the concept reference file Sam approved.
+hakes-logo-white.png - derived from logo.jpg (white-on-transparent, background removed). Real Hakes logo, same as the sign above the store door (storefront.jpg). Source: Google Business Profile gallery cid=11753644349764824227; also ProsGrade https://blob.prosgrade.com/uploads/business-gallery/business-47828/photo-03.jpg (logo) and photo-01.jpg (storefront).
