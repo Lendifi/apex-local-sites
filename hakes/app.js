@@ -5,9 +5,23 @@ const DEMO={name:'Jordan M.',address:'123 Example St, Saratoga Springs, UT',emai
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- nav, fab, hours ---------- */
-const nav=$('#nav'),fab=$('#fab');
+const nav=$('#nav'),fab=$('#fab'),stickyBook=$('#stickyBook'),stickyBar=$('#stickyBar'),bookModal=$('#bookModal');
 const demosEl=document.querySelector('#demos');
-function onScroll(){const y=scrollY;nav.classList.toggle('stuck',y>40);const dr=demosEl.getBoundingClientRect();const inDemos=dr.top<innerHeight*.6&&dr.bottom>innerHeight*.3;fab.classList.toggle('show',y>innerHeight*.8&&!inDemos);par()}
+function bookingInView(){
+ if(document.body.classList.contains('book-modal-open'))return true;
+ const bk=$('#bk'),panel=$('#p-book');
+ if(!bk||!panel||!panel.classList.contains('on'))return false;
+ const r=bk.getBoundingClientRect();
+ return r.top<innerHeight*.85&&r.bottom>innerHeight*.2;
+}
+function updateSticky(){
+ const y=scrollY;
+ const pastHero=y>innerHeight*.55;
+ const show=pastHero&&!bookingInView();
+ if(stickyBook)stickyBook.classList.toggle('show',show);
+ if(stickyBar)stickyBar.classList.toggle('show',show);
+}
+function onScroll(){const y=scrollY;nav.classList.toggle('stuck',y>40);const dr=demosEl.getBoundingClientRect();const inDemos=dr.top<innerHeight*.6&&dr.bottom>innerHeight*.3;fab.classList.toggle('show',y>innerHeight*.8&&!inDemos);updateSticky();par()}
 $('#burger').onclick=()=>{const o=nav.classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};
 $$('#links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 const HOURS={0:null,1:[10,18],2:[10,18],3:[10,18],4:[10,18],5:[10,18],6:[10,14]};
@@ -51,7 +65,11 @@ $$('#rGrid .reveal').forEach(x=>io.observe(x));
 
 /* ---------- gallery lightbox ---------- */
 $$('.gal figure').forEach(f=>f.onclick=()=>{const l=$('#lb');$('img',l).src=$('img',f).src;l.classList.add('on')});
-$('#lb').onclick=()=>$('#lb').classList.remove('on');addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').classList.remove('on')});
+$('#lb').onclick=()=>$('#lb').classList.remove('on');addEventListener('keydown',e=>{
+ if(e.key!=='Escape')return;
+ if(bookModal&&bookModal.classList.contains('on')){closeBookModal();return}
+ $('#lb').classList.remove('on')
+});
 
 /* ---------- shared demo helpers ---------- */
 const SERVICES=['Free in-home estimate: Hardwood','Free in-home estimate: LVP','Free in-home estimate: Carpet','Free in-home estimate: Tile','Free in-home estimate: Laminate','Free in-home estimate: Not sure yet'];
@@ -94,10 +112,50 @@ $('#panels').innerHTML=`
 <div><div class="lbl g">With Apex</div><div class="browser"><div class="bbar"><i></i><i></i><i></i><span>Your Hakes website</span></div><div class="bbody ok"><h4>Floors you will love</h4><p>Book a free estimate, ask the assistant, get a ballpark price.</p><a class="btn sm" style="margin-top:14px" href="#top">Book a free estimate</a></div></div></div></div>
 <p class="fine" style="margin-top:14px">Checked Nov 10, 2026. The address on public listings does not load, and a Canva address on another directory returns "Not found."</p></div>
 <aside><h3>Right now, the website button leads nowhere.</h3><p>Google, LinkedIn, and HomeAdvisor point to a web address that does not load. Every curious customer who taps it hits a dead end and calls the next shop.</p><ul><li>One working site, one clear next step</li><li>Shows on phones the way people search</li><li>Collects the lead around the clock</li></ul></aside></div></div>`;
-const showTab=id=>{$$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===id));$$('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+id))};
+const showTab=id=>{$$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===id));$$('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+id));updateSticky()};
 $('#tabs').onclick=e=>{const b=e.target.closest('button');if(b)showTab(b.dataset.t)};
 $$('[data-open-book]').forEach(a=>a.addEventListener('click',()=>showTab('book')));
 $$('[data-open-chat]').forEach(a=>a.addEventListener('click',()=>showTab('chat')));
+
+/* ---------- booking modal (sticky CTA) ---------- */
+let bookFocusReturn=null;
+function focusables(root){return $$('a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])',root).filter(el=>el.offsetParent!==null||el===document.activeElement)}
+function openBookModal(){
+ if(!bookModal)return;
+ showTab('book');
+ const host=$('#bookModalHost'),bk=$('#bk');
+ if(bk&&host&&bk.parentElement!==host)host.appendChild(bk);
+ bookFocusReturn=document.activeElement;
+ bookModal.classList.add('on');
+ bookModal.setAttribute('aria-hidden','false');
+ document.body.classList.add('book-modal-open');
+ updateSticky();
+ const closeBtn=$('#bookModalClose');
+ requestAnimationFrame(()=>{(closeBtn||focusables(bookModal)[0]||bookModal).focus()});
+}
+function closeBookModal(){
+ if(!bookModal||!bookModal.classList.contains('on'))return;
+ const two=$('#p-book .two'),bk=$('#bk'),host=$('#bookModalHost');
+ if(bk&&two&&bk.parentElement===host)two.insertBefore(bk,two.firstChild);
+ bookModal.classList.remove('on');
+ bookModal.setAttribute('aria-hidden','true');
+ document.body.classList.remove('book-modal-open');
+ updateSticky();
+ if(bookFocusReturn&&typeof bookFocusReturn.focus==='function')bookFocusReturn.focus();
+}
+if(stickyBook)stickyBook.addEventListener('click',openBookModal);
+if($('#stickyBarBook'))$('#stickyBarBook').addEventListener('click',openBookModal);
+if($('#bookModalClose'))$('#bookModalClose').addEventListener('click',closeBookModal);
+if(bookModal){
+ bookModal.addEventListener('click',e=>{if(e.target.closest('[data-close-book-modal]'))closeBookModal()});
+ bookModal.addEventListener('keydown',e=>{
+  if(e.key!=='Tab'||!bookModal.classList.contains('on'))return;
+  const list=focusables(bookModal);if(!list.length)return;
+  const first=list[0],last=list[list.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+ });
+}
 
 /* ---------- booking ---------- */
 const B={mat:'Hardwood',day:null,slot:null};
