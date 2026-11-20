@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Lumen Table",
+  "short_name": "Lumen Table",
+  "description": "A holo-table auto-battler. Spend 20 points, place your army, and watch the fight.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#020a10",
+  "theme_color": "#020a10",
+  "lang": "en",
+  "categories": ["games"],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
